@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace GameScene.Player
@@ -6,6 +7,12 @@ namespace GameScene.Player
    {
       public int hp = 100;
       public int lives = 3;
+      private Shooting shooter;
+
+      private void Awake()
+      {
+         shooter = gameObject.GetComponent<Shooting>();
+      }
 
 
       private void OnCollisionEnter2D(Collision2D col)
@@ -19,6 +26,13 @@ namespace GameScene.Player
 
       private void Update()
       {
+
+         if (Input.GetButtonDown("Fire1"))
+         {
+            shooter.Shoot();
+         }
+         
+         
          if (hp <= 0)
          {
             lives -= 1;
