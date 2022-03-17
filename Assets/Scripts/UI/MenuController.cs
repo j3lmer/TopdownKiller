@@ -14,14 +14,14 @@ namespace UI
 		GameObject _menuObject;
 		Canvas _canvas;
 		List<GameObject> _menuList = new List<GameObject>();
-		//end menu blocks
+
 
 		private void Start()
 		{
 			/* 
-		 * retrieves all menu gameobjects + canvas.
-		 * then sets onclickListeners to all buttons inside.
-		 */
+			* retrieves all menu gameobjects + canvas.
+			* then sets onclickListeners to all buttons inside.
+			*/
 			GetMenuObjects();
 			if (Debug.isDebugBuild)
 			{
