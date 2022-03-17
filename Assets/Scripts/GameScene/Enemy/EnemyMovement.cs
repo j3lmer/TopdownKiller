@@ -15,7 +15,7 @@ namespace GameScene.Enemy
             player = GameObject.FindGameObjectWithTag("Player").transform;
             rb = GetComponent<Rigidbody2D>();
         }
-
+        
         void Update()
         {
             Vector3 direction = player.position - transform.position;
@@ -23,13 +23,9 @@ namespace GameScene.Enemy
             rb.rotation = angle;
             direction.Normalize();
             movement = direction;
-        }
-
-        private void FixedUpdate()
-        {
             MoveCharacter(movement);
         }
-
+        
         void MoveCharacter(Vector2 direction)
         {
             if (IsPlayerInRange(range))
@@ -37,7 +33,7 @@ namespace GameScene.Enemy
                 rb.MovePosition((Vector2) transform.position + (direction * moveSpeed * Time.deltaTime));
             }
         }
-
+        
         private bool IsPlayerInRange(float range)
         {
             return Vector3.Distance(transform.position, player.transform.position) >= range;

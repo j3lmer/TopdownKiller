@@ -192,6 +192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  attackSpeed: 4
+  attackDistance: 10
+  bufferDistance: 5
 --- !u!114 &1113002494309283296
 MonoBehaviour:
   m_ObjectHideFlags: 0
