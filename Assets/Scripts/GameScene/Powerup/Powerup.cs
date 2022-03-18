@@ -6,7 +6,7 @@ namespace GameScene.Powerup
     {
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if(col.gameObject.name != "Player") return;
+            if(!col.gameObject.CompareTag("Player")) return;
             Destroy(gameObject);
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
