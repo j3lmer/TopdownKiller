@@ -8,6 +8,8 @@ TagManager:
   - EXPLANATION
   - QUIT
   - Bullet
+  - Powerup
+  - Enemy
   layers:
   - Default
   - TransparentFX
