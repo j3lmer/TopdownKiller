@@ -5,11 +5,17 @@ namespace GameScene.Enemy
 {
     public class EnemyMovement : MonoBehaviour
     {
-        public float speed = 10f;
-        public float stoppingDistance = 20f;
-        public float retreatDistance = 10f;
+        [SerializeField]
+        private float speed = 10f;
+        
+        [SerializeField]
+        private float stoppingDistance = 20f;
+        
+        [SerializeField]
+        private float retreatDistance = 10f;
 
-        public Transform player;
+        [SerializeField]
+        private Transform player;
 
         private void Awake()
         {

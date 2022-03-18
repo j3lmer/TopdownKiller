@@ -1,29 +1,39 @@
+using System;
 using UnityEngine;
 
 namespace GameScene.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public float moveSpeed = 5f;
-        public Rigidbody2D rb;
-        public Camera camera;
+        [SerializeField]
+        private float moveSpeed = 5f;
+        
+        private Rigidbody2D rb;
+        
+        [SerializeField]
+        private Camera camera;
 
-        public Vector2 movement;
-        private Vector2 _mousePos; 
-    
+        private Vector2 _movement;
+        private Vector2 _mousePos;
+
+
+        private void Awake()
+        {
+            rb = gameObject.GetComponent<Rigidbody2D>();
+        }
 
         // Update is called once per frame
         void Update()
         {
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
+            _movement.x = Input.GetAxisRaw("Horizontal");
+            _movement.y = Input.GetAxisRaw("Vertical");
 
             _mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
         }
 
         void FixedUpdate() 
         {
-            rb.MovePosition(rb.position +movement * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position +_movement * moveSpeed * Time.fixedDeltaTime);
 
             Vector2 lookDir = _mousePos - rb.position;
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;

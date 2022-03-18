@@ -7,11 +7,11 @@ namespace GameScene.Player
    {
       public int hp = 100;
       public int lives = 3;
-      private Shooting shooter;
+      private Shooting _shooter;
 
       private void Awake()
       {
-         shooter = gameObject.GetComponent<Shooting>();
+         _shooter = gameObject.GetComponent<Shooting>();
       }
 
 
@@ -29,7 +29,7 @@ namespace GameScene.Player
 
          if (Input.GetButtonDown("Fire1"))
          {
-            shooter.Shoot();
+            _shooter.Shoot();
          }
          
          

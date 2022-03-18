@@ -5,29 +5,28 @@ namespace GameScene.Enemy
 {
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] 
-        private int hp = 50;
+        public int hp = 50;
         
         [SerializeField] 
         private float coolDownTime = 0.5f;
         
-        private float shootTimer;
+        private float _shootTimer;
 
-        private Shooting shooter;
+        private Shooting _shooter;
 
 
         private void Awake()
         {
-            shooter = gameObject.GetComponent<Shooting>();
+            _shooter = gameObject.GetComponent<Shooting>();
         }
 
         private void Update()
         {
-            shootTimer += Time.deltaTime;
-            if (shootTimer > coolDownTime)
+            _shootTimer += Time.deltaTime;
+            if (_shootTimer > coolDownTime)
             {
-                shootTimer = 0f;
-                shooter.Shoot();
+                _shootTimer = 0f;
+                _shooter.Shoot();
             }
             
             
