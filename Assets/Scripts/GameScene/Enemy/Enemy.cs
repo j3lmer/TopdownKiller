@@ -19,6 +19,14 @@ namespace GameScene.Enemy
         {
             _shooter = gameObject.GetComponent<Shooting>();
         }
+        
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.collider.gameObject.CompareTag("Bullet"))
+            {
+                hp -= 10;
+            }
+        }
 
         private void Update()
         {

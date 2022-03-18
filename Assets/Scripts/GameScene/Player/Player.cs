@@ -41,7 +41,7 @@ namespace GameScene.Player
 
          if (lives == 0)
          {
-            //gameover
+            Destroy(gameObject);
          }
       }
    }
