@@ -12,16 +12,17 @@ namespace GameScene.Enemy
 
         [SerializeField] 
         private float coolDownTime = 0.5f;
+
         private float _shootTimer;
 
         private void Awake()
         {
-            _health = GetComponent<Health>();
-            _health.hp = 50;
-            _health.lives = 1;
-            
-            _shooter = gameObject.GetComponent<Shooting>();
-            if(GameObject.FindGameObjectWithTag("Player"))
+            _shooter        = GetComponent<Shooting>();
+            _health         = GetComponent<Health>();
+            _health.hp      = 50;
+            _health.lives   = 1;
+
+            if (GameObject.FindGameObjectWithTag("Player"))
             {
                 _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player.Player>();
             }
