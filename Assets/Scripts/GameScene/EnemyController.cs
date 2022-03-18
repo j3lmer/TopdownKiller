@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace GameScene
@@ -15,8 +14,7 @@ namespace GameScene
         {
             StartCoroutine(SpawnEnemies());
         }
-
-
+        
         private IEnumerator SpawnEnemies()
         {
             while (true)

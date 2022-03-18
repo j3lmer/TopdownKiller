@@ -14,8 +14,7 @@ namespace GameScene.Player
       {
          _shooter = gameObject.GetComponent<Shooting>();
       }
-
-
+      
       private void OnCollisionEnter2D(Collision2D col)
       {
          if (col.collider.gameObject.CompareTag("Bullet"))
@@ -23,8 +22,7 @@ namespace GameScene.Player
             hp -= 10;
          }
       }
-
-
+      
       private void Update()
       {
 
@@ -32,7 +30,6 @@ namespace GameScene.Player
          {
             _shooter.Shoot();
          }
-         
          
          if (hp <= 0)
          {
@@ -42,6 +39,7 @@ namespace GameScene.Player
          if (lives == 0)
          {
             Destroy(gameObject);
+            Debug.Log(points);
          }
       }
    }

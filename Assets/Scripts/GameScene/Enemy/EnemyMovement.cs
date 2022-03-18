@@ -25,6 +25,9 @@ namespace GameScene.Enemy
 
         private void Update()
         {
+            if(!player) return;
+            if (!transform) return;
+            
             Vector2 pos = transform.position;
             Vector2 playerPos = player.position;
             Vector3 direction = playerPos - pos;
