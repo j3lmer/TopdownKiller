@@ -64,7 +64,6 @@ namespace GameScene.Enemy
                 transform.position = pos;
             }
         }
-
     }
 }
 
