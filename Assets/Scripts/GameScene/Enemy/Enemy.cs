@@ -5,8 +5,6 @@ namespace GameScene.Enemy
 {
     public class Enemy : MonoBehaviour
     {
-        public int hp = 50;
-        
         [SerializeField] 
         private float coolDownTime = 0.5f;
         
@@ -14,19 +12,23 @@ namespace GameScene.Enemy
 
         private Shooting _shooter;
         private Player.Player _player;
+        private Health _health;
+        private Death _death;
+
 
 
         private void Awake()
         {
+            _death = gameObject.AddComponent<Death>();
+            _health = GetComponent<Health>();
+            
+            _health.hp = 50;
+            _health.lives = 1;
+            
             _shooter = gameObject.GetComponent<Shooting>();
-            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player.Player>();;
-        }
-        
-        private void OnCollisionEnter2D(Collision2D col)
-        {
-            if (col.collider.gameObject.CompareTag("Bullet"))
+            if(GameObject.FindGameObjectWithTag("Player"))
             {
-                hp -= 10;
+                _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player.Player>();
             }
         }
 
@@ -36,12 +38,7 @@ namespace GameScene.Enemy
             if (_shootTimer > coolDownTime)
             {
                 _shootTimer = 0f;
-                _shooter.Shoot();
-            }
-            
-            if (hp <= 0)
-            {
-                Destroy(gameObject);
+                _shooter.Shoot(Color.black);
             }
         }
 

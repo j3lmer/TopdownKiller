@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace GameScene
@@ -6,11 +7,18 @@ namespace GameScene
     {
         [SerializeField]
         private GameObject hitEffect;
-    
-        private void OnCollisionEnter2D(Collision2D col)
+
+
+        private void OnTriggerEnter2D(Collider2D col)
         {
-            // GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            // Destroy(effect, 5f);
+            if (col.GetComponent<Collider2D>().CompareTag("Bullet")) return;
+            Health health = col.GetComponent<Health>();
+            
+            if (health)
+            {
+                health.hp -= 10;
+            }
+            
             Destroy(gameObject);
         }
     }
