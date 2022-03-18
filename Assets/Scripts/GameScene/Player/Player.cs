@@ -9,6 +9,8 @@ namespace GameScene.Player
       public int lives = 3;
       public int points = 0;
       private Shooting _shooter;
+      private float _timeUntilShoot = 0.2f;
+      private float countingTime;
 
       private void Awake()
       {
@@ -25,9 +27,10 @@ namespace GameScene.Player
       
       private void Update()
       {
-
-         if (Input.GetButtonDown("Fire1"))
+         countingTime += Time.deltaTime;
+         if (Input.GetButtonDown("Fire1") && _timeUntilShoot < countingTime)
          {
+            countingTime = 0f;
             _shooter.Shoot();
          }
          
