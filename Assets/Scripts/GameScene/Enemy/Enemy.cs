@@ -14,7 +14,6 @@ namespace GameScene.Enemy
         private float coolDownTime = 0.5f;
 
         private float _shootTimer;
-
         private void Awake()
         {
             _shooter        = GetComponent<Shooting>();

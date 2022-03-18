@@ -24,7 +24,7 @@ namespace GameScene.Player
       private void Update()
       {
          _countingTime += Time.deltaTime;
-         if (Input.GetButtonDown("Fire1") && _timeUntilShoot < _countingTime)
+         if (Input.GetButton("Fire1") && _timeUntilShoot < _countingTime)
          {
             _countingTime = 0f;
             _shooter.Shoot(Color.white);

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace GameScene
@@ -7,11 +6,14 @@ namespace GameScene
     {
         [SerializeField]
         private GameObject hitEffect;
+        
+        private float _despawnTime = 2f;
+        private float aliveTime = 0f;
 
-
+        
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.GetComponent<Collider2D>().CompareTag("Bullet")) return;
+            if (col.CompareTag("Bullet") || col.CompareTag("Powerup")) return;
             Health health = col.GetComponent<Health>();
             
             if (health)
@@ -20,6 +22,16 @@ namespace GameScene
             }
             
             Destroy(gameObject);
+        }
+
+        private void Update()
+        {
+            aliveTime += Time.deltaTime;
+
+            if (aliveTime >= _despawnTime)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
