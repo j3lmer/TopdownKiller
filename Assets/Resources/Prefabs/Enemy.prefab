@@ -191,10 +191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa13a1128ec3e8a48aee995296c2d83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  stoppingDistance: 15
+  retreatDistance: 5
   player: {fileID: 0}
-  attackSpeed: 4
-  attackDistance: 10
-  bufferDistance: 5
 --- !u!114 &1113002494309283296
 MonoBehaviour:
   m_ObjectHideFlags: 0

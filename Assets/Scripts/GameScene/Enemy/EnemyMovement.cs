@@ -1,42 +1,55 @@
+using System;
 using UnityEngine;
 
 namespace GameScene.Enemy
 {
     public class EnemyMovement : MonoBehaviour
     {
-        public Transform player; // changed this to Transform
-        private Rigidbody2D rb;
-        private Vector2 movement;
-        private float moveSpeed = 5f;
-        private float range = 8f;
+        public float speed = 10f;
+        public float stoppingDistance = 20f;
+        public float retreatDistance = 10f;
 
-        void Awake()
+        public Transform player;
+
+        private void Awake()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
-            rb = GetComponent<Rigidbody2D>();
         }
-        
-        void Update()
+
+
+        private void Update()
         {
-            Vector3 direction = player.position - transform.position;
+            Vector2 pos = transform.position;
+            Vector2 playerPos = player.position;
+            Vector3 direction = playerPos - pos;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = angle;
-            direction.Normalize();
-            movement = direction;
-            MoveCharacter(movement);
-        }
-        
-        void MoveCharacter(Vector2 direction)
-        {
-            if (IsPlayerInRange(range))
+            
+            gameObject.GetComponent<Rigidbody2D>().rotation = angle;
+            
+            float enemyPlayerDistance = Vector2.Distance(pos, playerPos);
+            
+            if (enemyPlayerDistance > stoppingDistance) 
             {
-                rb.MovePosition((Vector2) transform.position + (direction * moveSpeed * Time.deltaTime));
+                transform.position = Vector2.MoveTowards
+                (
+                    pos,
+                    playerPos,
+                    speed * Time.deltaTime
+                );
             }
-        }
-        
-        private bool IsPlayerInRange(float range)
-        {
-            return Vector3.Distance(transform.position, player.transform.position) >= range;
+            else if (enemyPlayerDistance < retreatDistance)
+            {
+                transform.position = Vector2.MoveTowards
+                    (
+                        pos,
+                        playerPos,
+                        -speed * Time.deltaTime
+                    );
+            }
+            else if (enemyPlayerDistance < stoppingDistance && enemyPlayerDistance > stoppingDistance)
+            {   
+                transform.position = pos;
+            }
         }
 
     }
