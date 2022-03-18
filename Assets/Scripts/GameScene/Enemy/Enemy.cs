@@ -16,10 +16,10 @@ namespace GameScene.Enemy
         private float _shootTimer;
         private void Awake()
         {
-            _shooter        = GetComponent<Shooting>();
-            _health         = GetComponent<Health>();
-            _health.hp      = 50;
-            _health.lives   = 1;
+            _shooter = GetComponent<Shooting>();
+            _health  = GetComponent<Health>();
+            _health.SetHp(50);
+            _health.SetLives(1);
 
             if (GameObject.FindGameObjectWithTag("Player"))
             {

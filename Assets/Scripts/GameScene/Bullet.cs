@@ -14,11 +14,12 @@ namespace GameScene
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("Bullet") || col.CompareTag("Powerup")) return;
-            Health health = col.GetComponent<Health>();
             
+            Health health = col.GetComponent<Health>();
             if (health)
             {
-                health.hp -= 10;
+                Debug.Log(health.GetHp());
+                health.SetHp(health.GetHp() - 10);
             }
             
             Destroy(gameObject);

@@ -15,12 +15,13 @@ namespace GameScene
 
         private void Update()
         {
-            if (_health.hp <= 0)
+            int hp = _health.GetHp();
+            if ( hp <= 0)
             {
-                _health.lives -= 1;
+                _health.SetLives(_health.GetLives() - 1);
             }
 
-            if (_health.lives <= 0)
+            if (_health.GetLives() <= 0)
             {
                 Destroy(gameObject);
             }

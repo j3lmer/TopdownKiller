@@ -20,6 +20,7 @@ namespace GameScene.Player
         private void Awake()
         {
             rb = gameObject.GetComponent<Rigidbody2D>();
+            camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         }
 
         // Update is called once per frame

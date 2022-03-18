@@ -17,8 +17,8 @@ namespace GameScene.Player
          _health = GetComponent<Health>();
          _shooter = gameObject.GetComponent<Shooting>();
 
-         _health.hp = 100;
-         _health.lives = 3;
+         _health.SetHp(100) ;
+         _health.SetLives(3);
       }
 
       private void Update()
