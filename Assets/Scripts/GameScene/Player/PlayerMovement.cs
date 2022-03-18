@@ -6,12 +6,12 @@ namespace GameScene.Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField]
-        private float moveSpeed = 5f;
-        
-        private Rigidbody2D rb;
-        
-        [SerializeField]
         private Camera camera;
+
+        [SerializeField]
+        private float moveSpeed = 5f;
+
+        private Rigidbody2D rb;
 
         private Vector2 _movement;
         private Vector2 _mousePos;

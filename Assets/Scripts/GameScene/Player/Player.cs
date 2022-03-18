@@ -7,6 +7,7 @@ namespace GameScene.Player
    {
       public int hp = 100;
       public int lives = 3;
+      public int points = 0;
       private Shooting _shooter;
 
       private void Awake()
