@@ -15,7 +15,8 @@ namespace GameScene
 
         private void Update()
         {
-            if (_health.GetHp() <= 0)
+            int hp = _health.GetHp();
+            if ( hp <= 0)
             {
                 _health.SetLives(_health.GetLives() - 1);
             }
