@@ -5,12 +5,12 @@ namespace GameScene.Player
 {
    public class Player : MonoBehaviour
    {
-      public int points = 0;
-      private Shooting _shooter;
-      private float _timeUntilShoot = 0.2f;
-      private float _countingTime;
       private Health _health;
+      private Shooting _shooter;
       private Death _death;
+      private float _countingTime;
+      private float _timeUntilShoot = 0.2f;
+      public int points             = 0;
 
       private void Awake()
       {

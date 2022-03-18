@@ -6,7 +6,7 @@ namespace GameScene
     [RequireComponent(typeof(Health))]
     public class Death : MonoBehaviour
     {
-        private Health _health ;
+        private Health _health;
 
         private void Awake()
         {

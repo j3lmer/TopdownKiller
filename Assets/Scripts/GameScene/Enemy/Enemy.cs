@@ -5,17 +5,14 @@ namespace GameScene.Enemy
 {
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] 
-        private float coolDownTime = 0.5f;
-        
-        private float _shootTimer;
-
-        private Shooting _shooter;
         private Player.Player _player;
+        private Shooting _shooter;
         private Health _health;
         private Death _death;
 
-
+        [SerializeField] 
+        private float coolDownTime = 0.5f;
+        private float _shootTimer;
 
         private void Awake()
         {
