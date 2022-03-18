@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace GameScene.Enemy
 {
+    [RequireComponent(typeof(Death))]
     public class Enemy : MonoBehaviour
     {
         private Player.Player _player;
         private Shooting _shooter;
         private Health _health;
-        private Death _death;
 
         [SerializeField] 
         private float coolDownTime = 0.5f;
@@ -16,9 +16,7 @@ namespace GameScene.Enemy
 
         private void Awake()
         {
-            _death = gameObject.AddComponent<Death>();
             _health = GetComponent<Health>();
-            
             _health.hp = 50;
             _health.lives = 1;
             
