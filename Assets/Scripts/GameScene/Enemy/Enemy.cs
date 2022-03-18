@@ -32,7 +32,7 @@ namespace GameScene.Enemy
         private void Update()
         {
             _shootTimer += Time.deltaTime;
-            if (_shootTimer > coolDownTime)
+            if (_shootTimer > coolDownTime && _player)
             {
                 _shootTimer = 0f;
                 _shooter.Shoot(Color.black);
@@ -41,7 +41,7 @@ namespace GameScene.Enemy
 
         private void OnDestroy()
         {
-            _player.points += 10;
+            if(_player) _player.points += 10;
         }
     }
 }

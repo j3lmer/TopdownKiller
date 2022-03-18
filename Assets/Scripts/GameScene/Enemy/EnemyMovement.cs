@@ -19,7 +19,7 @@ namespace GameScene.Enemy
 
         private void Awake()
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            if (GameObject.FindGameObjectWithTag("Player")) player = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
 
