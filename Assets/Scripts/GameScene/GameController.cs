@@ -28,6 +28,7 @@ namespace GameScene
         
         private IEnumerator WaveController()
         {
+            yield return new WaitForSeconds(1);
             _enemyController.spawnDefaultEnemy = true;
             StartCoroutine(_enemyController.SpawnEnemies());
             yield return null;
