@@ -10,11 +10,9 @@ namespace GameScene
         [SerializeField]
         private GameObject enemyPrefab;
 
-        public bool spawnDefaultEnemy;
-
         public IEnumerator SpawnEnemies()
         {
-            while (spawnDefaultEnemy)
+            while (true)
             {
                 Vector2 spawnLocation = new Vector2(Random.Range(-25, 25), Random.Range(10 , -10));
                 GameObject enemy = Instantiate(enemyPrefab, spawnLocation, Quaternion.identity);

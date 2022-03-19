@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameScene
@@ -10,7 +11,7 @@ namespace GameScene
         private GameObject playerPrefab;
 
         private GameObject _player;
-        private EnemyController _enemyController; 
+        private EnemyController _enemyController;
         
         private void Awake()
         {
@@ -28,9 +29,38 @@ namespace GameScene
         
         private IEnumerator WaveController()
         {
+            //TODO: laat op scherm zien welke wave het is
             yield return new WaitForSeconds(1);
-            _enemyController.spawnDefaultEnemy = true;
-            StartCoroutine(_enemyController.SpawnEnemies());
+            bool waveOneFinished = false;
+            Debug.Log(waveOneFinished);
+            Task spawnDefaultEnemies = new Task(MakeWave(1, _enemyController.SpawnEnemies(), 20));
+            
+            spawnDefaultEnemies.Finished += delegate(bool manual)
+            {
+                waveOneFinished = true;
+                Debug.Log(waveOneFinished);
+            };
+
+            yield return new WaitUntil(() => waveOneFinished == true);
+        }
+        
+        private IEnumerator MakeWave(int numberOfCouroutines, IEnumerator function, int waveLengthInSeconds)
+        {
+            List<Coroutine> coroutines = new List<Coroutine>();
+            
+            for (int i = 0; i < numberOfCouroutines; i++)
+            {
+                Coroutine thisCoroutine = StartCoroutine(function);
+                coroutines.Add(thisCoroutine);
+            }
+            
+            yield return new WaitForSeconds(waveLengthInSeconds);
+            
+            coroutines.ForEach(delegate(Coroutine coroutine)
+            {
+                StopCoroutine(coroutine);
+            });
+
             yield return null;
         }
     }
