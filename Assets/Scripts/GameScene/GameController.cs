@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
 namespace GameScene
@@ -30,21 +32,21 @@ namespace GameScene
         private IEnumerator WaveController()
         {
             //TODO: laat op scherm zien welke wave het is
+
+            bool[] finishedWaves = {false, false, false};
             yield return new WaitForSeconds(1);
-            bool waveOneFinished = false;
-            Debug.Log(waveOneFinished);
-            Task spawnDefaultEnemies = new Task(MakeWave(1, _enemyController.SpawnEnemies(), 20));
+            
+            Task spawnDefaultEnemies = new Task(WaveComponent(1, _enemyController.SpawnEnemies(), 20));
             
             spawnDefaultEnemies.Finished += delegate(bool manual)
             {
-                waveOneFinished = true;
-                Debug.Log(waveOneFinished);
+                finishedWaves[0] = true;
             };
 
-            yield return new WaitUntil(() => waveOneFinished == true);
+            yield return new WaitUntil(() => finishedWaves[0]);
         }
         
-        private IEnumerator MakeWave(int numberOfCouroutines, IEnumerator function, int waveLengthInSeconds)
+        private IEnumerator WaveComponent(int numberOfCouroutines, IEnumerator function, int waveLengthInSeconds)
         {
             List<Coroutine> coroutines = new List<Coroutine>();
             
