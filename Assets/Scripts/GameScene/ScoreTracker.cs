@@ -10,7 +10,6 @@ namespace GameScene
         
         public void UpdateScore(int score)
         {
-            Debug.Log("score");
             scoreText.SetText($"Score: {score}");
         }
     }

@@ -7,6 +7,17 @@ namespace GameScene
     {
         private int _hp;
         private int _lives;
+        private bool _isPlayer = false;
+        private LifeTracker _tracker = null;
+
+        private void Awake()
+        {
+            if (gameObject.CompareTag("Player"))
+            {
+                _isPlayer = true;
+                _tracker = GameObject.FindGameObjectWithTag("GameController").GetComponent<LifeTracker>();
+            }
+        }
 
         public int GetHp()
         {
@@ -16,12 +27,22 @@ namespace GameScene
         public void SetHp(int newHp)
         {
             _hp = newHp;
-            if (gameObject.CompareTag("Player"))
+            CheckForPlayer();
+        }
+
+        public void SubtractHp(int hp)
+        {
+            _hp -= hp;
+            CheckForPlayer();
+        }
+
+        public void CheckForPlayer()
+        {
+            if (_isPlayer)
             {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<LifeTracker>().UpdateHealth(newHp);
+                _tracker.UpdateHealth(GetHp());
             }
         }
-        
         
         public int GetLives()
         {
@@ -31,9 +52,9 @@ namespace GameScene
         public void SetLives(int newLives)
         {
             _lives = newLives;
-            if (gameObject.CompareTag("Player"))
+            if (_isPlayer)
             {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<LifeTracker>().UpdateLives(newLives);
+                _tracker.UpdateLives(newLives);
             }
 
             if (_lives > 0)
