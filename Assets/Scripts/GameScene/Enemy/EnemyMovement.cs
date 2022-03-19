@@ -36,10 +36,10 @@ namespace GameScene.Enemy
 
             gameObject.GetComponent<Rigidbody2D>().rotation = angle;
             
-            move(pos, playerPos, enemyPlayerDistance);
+            Move(pos, playerPos, enemyPlayerDistance);
         }
 
-        private void move(Vector2 pos, Vector2 playerPos, float enemyPlayerDistance)
+        private void Move(Vector2 pos, Vector2 playerPos, float enemyPlayerDistance)
         {
             if (enemyPlayerDistance > stoppingDistance) 
             {

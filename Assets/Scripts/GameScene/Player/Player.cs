@@ -3,19 +3,18 @@ using UnityEngine;
 
 namespace GameScene.Player
 {
-   [RequireComponent(typeof(Death))]
+   [RequireComponent(typeof(Death)), RequireComponent(typeof(Score))]
    public class Player : MonoBehaviour
    {
       private Health _health;
       private Shooting _shooter;
+      private Score _score;
       private float _countingTime;
       private float _timeUntilShoot = 0.2f;
-      public int points             = 0;
-
       private void Awake()
       {
          _health = GetComponent<Health>();
-         _shooter = gameObject.GetComponent<Shooting>();
+         _shooter = GetComponent<Shooting>();
 
          _health.SetHp(100) ;
          _health.SetLives(3);

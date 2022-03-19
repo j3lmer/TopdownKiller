@@ -12,7 +12,7 @@ namespace GameScene
 
         private GameObject _player;
 
-        private int playerLives;
+        private int _playerLives;
         
         private void Awake()
         {

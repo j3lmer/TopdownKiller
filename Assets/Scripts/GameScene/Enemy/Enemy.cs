@@ -1,4 +1,5 @@
 using System;
+using GameScene.Player;
 using UnityEngine;
 
 namespace GameScene.Enemy
@@ -39,7 +40,11 @@ namespace GameScene.Enemy
 
         private void OnDestroy()
         {
-            if(_player) _player.points += 10;
+            if (_player)
+            {
+                _player.GetComponent<Score>().UpdateScore(10);
+            }
+            
         }
     }
 }
