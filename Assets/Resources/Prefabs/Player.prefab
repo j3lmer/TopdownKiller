@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6647607908103105535}
   - component: {fileID: 6647607908103105534}
   - component: {fileID: 6647607908103105522}
-  - component: {fileID: 6647607908103105523}
   - component: {fileID: 226633898740279773}
   - component: {fileID: 3294856552782556281}
   - component: {fileID: 6263995216283193822}
@@ -141,19 +140,6 @@ MonoBehaviour:
   firePoint: {fileID: 6647607909095186815}
   bulletPrefab: {fileID: 578457541570576076, guid: ccd3d41c7151cf6da8d591b215a1a882, type: 3}
   bulletForce: 20
---- !u!114 &6647607908103105523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6647607908103105533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8621a9ea3a05cbd0aab958079e92432, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  points: 0
 --- !u!61 &226633898740279773
 BoxCollider2D:
   m_ObjectHideFlags: 0

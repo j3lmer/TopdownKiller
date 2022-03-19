@@ -1,6 +1,5 @@
-using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace GameScene
 {
@@ -11,18 +10,27 @@ namespace GameScene
         private GameObject playerPrefab;
 
         private GameObject _player;
-
-        private int _playerLives;
+        private EnemyController _enemyController; 
         
         private void Awake()
         {
+            _enemyController = gameObject.GetComponent<EnemyController>();
             _player = MakePlayer();
-            StartCoroutine(gameObject.GetComponent<EnemyController>().SpawnEnemies());
+            StartCoroutine(WaveController());
         }
         
         private GameObject MakePlayer() 
         {
-            return Instantiate(playerPrefab, new Vector3(), Quaternion.identity);
+            GameObject player = Instantiate(playerPrefab, new Vector3(), Quaternion.identity);
+            player.AddComponent<Player.Player>();
+            return player;
+        }
+        
+        private IEnumerator WaveController()
+        {
+            _enemyController.spawnDefaultEnemy = true;
+            StartCoroutine(_enemyController.SpawnEnemies());
+            yield return null;
         }
     }
 }
