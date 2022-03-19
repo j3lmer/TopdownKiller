@@ -18,8 +18,7 @@ namespace GameScene
             Health health = col.GetComponent<Health>();
             if (health)
             {
-                Debug.Log(health.GetHp());
-                health.SetHp(health.GetHp() - 10);
+                health.SubtractHp(10);
             }
             
             Destroy(gameObject);
