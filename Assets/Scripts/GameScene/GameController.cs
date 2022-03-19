@@ -14,6 +14,7 @@ namespace GameScene
 
         private GameObject _player;
         private EnemyController _enemyController;
+        private WaveTracker tracker;
         
         private bool[] finishedWaves = {false, false, false};
 
@@ -30,12 +31,32 @@ namespace GameScene
         public void SetFinishedWaves(int index, bool value)
         {
             finishedWaves[index] = value;
+            tracker.UpdateWaveText(getCurrentWaveNumber());
+        }
+
+        public int getCurrentWaveNumber()
+        {
+            int correctIndex = 0;
+            for (var i = 0; i < finishedWaves.Length; i++)
+            {
+                if (
+                    finishedWaves[i] != finishedWaves[i + 1] &&
+                    finishedWaves[i] &&
+                    finishedWaves[i + 1] == false
+                )
+                {
+                    correctIndex = i;
+                }
+            }
+            return correctIndex;
         }
         
         private void Awake()
         {
-            _enemyController = gameObject.GetComponent<EnemyController>();
+            _enemyController = GetComponent<EnemyController>();
             _player          = MakePlayer();
+            tracker = GetComponent<WaveTracker>();
+            tracker.UpdateWaveText(0);
             
             StartCoroutine(WaveController());
         }
