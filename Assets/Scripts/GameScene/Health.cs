@@ -31,10 +31,14 @@ namespace GameScene
         public void SetLives(int newLives)
         {
             _lives = newLives;
-            SetHp(100);
             if (gameObject.CompareTag("Player"))
             {
                 GameObject.FindGameObjectWithTag("GameController").GetComponent<LifeTracker>().UpdateLives(newLives);
+            }
+
+            if (_lives > 0)
+            {
+                SetHp(100);
             }
         }
     }

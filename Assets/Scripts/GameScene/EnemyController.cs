@@ -10,12 +10,7 @@ namespace GameScene
         [SerializeField]
         private GameObject enemyPrefab;
 
-        private void Start()
-        {
-            StartCoroutine(SpawnEnemies());
-        }
-        
-        private IEnumerator SpawnEnemies()
+        public IEnumerator SpawnEnemies()
         {
             while (true)
             {

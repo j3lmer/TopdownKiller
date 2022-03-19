@@ -14,12 +14,12 @@ namespace GameScene
 
         private int playerLives;
         
-        private void Start()
+        private void Awake()
         {
             _player = MakePlayer();
+            StartCoroutine(gameObject.GetComponent<EnemyController>().SpawnEnemies());
         }
-
-
+        
         private GameObject MakePlayer() 
         {
             return Instantiate(playerPrefab, new Vector3(), Quaternion.identity);

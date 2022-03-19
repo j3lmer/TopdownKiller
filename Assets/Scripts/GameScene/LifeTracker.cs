@@ -20,7 +20,5 @@ namespace GameScene
         {
             healthText.SetText($"Health: {health}");
         }
-        
-        
     }
 }
