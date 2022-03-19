@@ -16,7 +16,7 @@ namespace GameScene
             {
                 _isPlayer = true;
                 _tracker = GameObject.FindGameObjectWithTag("GameController").GetComponent<LifeTracker>();
-                
+
             }
         }
 
