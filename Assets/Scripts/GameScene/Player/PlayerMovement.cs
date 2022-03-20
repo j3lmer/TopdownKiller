@@ -16,6 +16,16 @@ namespace GameScene.Player
         private Vector2 _movement;
         private Vector2 _mousePos;
 
+        public float GetMoveSpeed()
+        {
+            return moveSpeed;
+        }
+
+        public void SetMoveSpeed(float speed)
+        {
+            moveSpeed = speed;
+        }
+
 
         private void Awake()
         {
