@@ -6,7 +6,11 @@ using UnityEngine;
 
 namespace GameScene
 {
-    [RequireComponent(typeof(EnemyController)), RequireComponent(typeof(PowerupController))]
+    [
+        RequireComponent(typeof(EnemyController)), 
+        RequireComponent(typeof(PowerupController)), 
+        RequireComponent(typeof(WaveTracker))
+    ]
     public class GameController : MonoBehaviour
     {
         [SerializeField] 
@@ -14,50 +18,40 @@ namespace GameScene
 
         private GameObject _player;
         private EnemyController _enemyController;
-        private WaveTracker tracker;
+        private WaveTracker _tracker;
         
-        private bool[] finishedWaves = {false, false, false};
+        private int _currentWave = 0;
+        private int _totalWaves = 3;
 
-        public bool[] GetFinishedWaves()
+        public int GetCurrentWave()
         {
-            return finishedWaves;
+            return _currentWave;
         }
-
-        public bool GetFinishedWaveAtIndex(int index)
+        
+        public void SetCurrentWave(int cw)
         {
-            return finishedWaves[index];
+            _currentWave =  cw;
+            _tracker.UpdateWaveText(cw);
         }
-
-        public void SetFinishedWaves(int index, bool value)
+        
+        public int GetTotalWaves()
         {
-            finishedWaves[index] = value;
-            tracker.UpdateWaveText(getCurrentWaveNumber());
+            return _totalWaves;
         }
-
-        public int getCurrentWaveNumber()
+        
+        public void SetTotalWaves(int tw)
         {
-            int correctIndex = 0;
-            for (var i = 0; i < finishedWaves.Length; i++)
-            {
-                if (
-                    finishedWaves[i] != finishedWaves[i + 1] &&
-                    finishedWaves[i] &&
-                    finishedWaves[i + 1] == false
-                )
-                {
-                    correctIndex = i;
-                }
-            }
-            return correctIndex;
+            _totalWaves = tw;
         }
+      
         
         private void Awake()
         {
             _enemyController = GetComponent<EnemyController>();
+            _tracker         = GetComponent<WaveTracker>();
             _player          = MakePlayer();
-            tracker = GetComponent<WaveTracker>();
-            tracker.UpdateWaveText(0);
-            
+
+            _tracker.UpdateWaveText(0);
             StartCoroutine(WaveController());
         }
         
@@ -77,16 +71,27 @@ namespace GameScene
         {
             //TODO: laat op scherm zien welke wave het is
 
-            yield return new WaitForSeconds(1);
-            
-            Task spawnDefaultEnemies = new Task(WaveComponent(1, _enemyController.SpawnEnemies(), 20));
-            
+            for (int i = 0; i < _totalWaves; i++)
+            {
+                yield return new WaitForSeconds(1);
+          
+                var i1 = i;
+                yield return new WaitUntil(() => GetCurrentWave() == i1 + 1);
+                
+                yield return new WaitForSeconds(5);
+            }
+        }
+
+
+        private Task StartTask(int index)
+        {
+            Task spawnDefaultEnemies = new Task(WaveComponent(index + 1, _enemyController.SpawnEnemies(), 20));
             spawnDefaultEnemies.Finished += delegate(bool manual)
             {
-                SetFinishedWaves(0, true);
+                SetCurrentWave(index + 1);
             };
 
-            yield return new WaitUntil(() => GetFinishedWaveAtIndex(0));
+            return spawnDefaultEnemies;
         }
         
         private IEnumerator WaveComponent(int numberOfCouroutines, IEnumerator function, int waveLengthInSeconds)
@@ -101,12 +106,17 @@ namespace GameScene
             
             yield return new WaitForSeconds(waveLengthInSeconds);
             
+            StopCoroutines(coroutines);
+
+            yield return null;
+        } 
+        
+        private void StopCoroutines(List<Coroutine> coroutines)
+        {
             coroutines.ForEach(delegate(Coroutine coroutine)
             {
                 StopCoroutine(coroutine);
             });
-
-            yield return null;
         }
     }
 }
