@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
 namespace GameScene
@@ -13,14 +11,17 @@ namespace GameScene
     ]
     public class GameController : MonoBehaviour
     {
+        //TODO: differentieer tussen totale waves en waves binnen waves.
+        
         [SerializeField] 
         private GameObject playerPrefab;
 
-        private GameObject _player;
-        private EnemyController _enemyController;
-        private WaveTracker _tracker;
-        
-        private int _currentWave = 0;
+        private GameObject                      _player;
+        private EnemyController                 _enemyController;
+        private WaveTracker                     _tracker;
+        private Dictionary<string, IEnumerator> _enemySpawnerFunctions = new Dictionary<string, IEnumerator>();
+
+        private int _currentWave;
         private int _totalWaves = 3;
 
         public int GetCurrentWave()
@@ -49,11 +50,17 @@ namespace GameScene
             _enemyController = GetComponent<EnemyController>();
             _tracker         = GetComponent<WaveTracker>();
             _player          = MakePlayer();
-
+            
+            SetupSpawnerFunctionsList();
             _tracker.UpdateWaveText(0);
             StartCoroutine(WaveController());
         }
-        
+
+        private void SetupSpawnerFunctionsList()
+        { 
+            _enemySpawnerFunctions.Add("default", _enemyController.SpawnEnemies());
+        }
+
         private GameObject MakePlayer() 
         {
             return Instantiate
@@ -69,12 +76,11 @@ namespace GameScene
         // Master controller which states how many waves shall be started, what kind of enemies they will spawn and how long each wave will last
         private IEnumerator WaveController()
         {
-            // TODO: Maak lijst aan Ienumerator functies die verschillende soorten enemies spawnen (net als spawnDefaultEnemies). Loop een paar keer, als index deelbaar is door X, spawn dan andere soort enemies
+            // TODO: Maak lijst aan Ienumerator functies die verschillende soorten enemies spawnen (net als spawnDefaultEnemies). Loop een paar keer, als index deelbaar is door X, spawn dan andere soort enemies, spawn soms random enemies.
             bool finished = false;
-            IEnumerator spawnDefaultEnemies = _enemyController.SpawnEnemies();
 
             Debug.Log("wavecontroller started");
-            Task task = new Task(StartWaves(3, spawnDefaultEnemies, 20));
+            Task task = new Task(StartWaves(3, _enemySpawnerFunctions["default"], 20));
             
             task.Finished += delegate(bool manual)
             {
@@ -87,7 +93,7 @@ namespace GameScene
         }
 
         // Sets total amount of waves, starts them, gives some extra time between waves
-        private IEnumerator StartWaves(int totalWaves, IEnumerator waveType, int waveLength)
+        private IEnumerator StartWaves(int totalWaves, IEnumerator waveType, int waveLengthInSeconds)
         {
             SetTotalWaves(totalWaves);
             
@@ -96,8 +102,7 @@ namespace GameScene
                 yield return new WaitForSeconds(1);
                 Debug.Log("wavetask started");
 
-
-                StartTask(i, waveType, waveLength);
+                StartTask(i, waveType, waveLengthInSeconds);
           
                 var i1 = i;
                 yield return new WaitUntil(() => GetCurrentWave() == i1 + 1);
@@ -126,8 +131,7 @@ namespace GameScene
             
             for (int i = 0; i < numberOfCouroutines; i++)
             {
-                Coroutine thisCoroutine = StartCoroutine(function);
-                coroutines.Add(thisCoroutine);
+                coroutines.Add(StartCoroutine(function));
             }
             
             yield return new WaitForSeconds(waveLengthInSeconds);
