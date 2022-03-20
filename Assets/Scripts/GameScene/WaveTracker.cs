@@ -8,7 +8,6 @@ namespace GameScene
     {
         [SerializeField]
         private TMP_Text _waveText;
-        
 
         public void UpdateWaveText(int waveNumber)
         {
