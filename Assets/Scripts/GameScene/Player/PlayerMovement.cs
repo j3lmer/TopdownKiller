@@ -11,7 +11,7 @@ namespace GameScene.Player
         [SerializeField]
         private float moveSpeed = 5f;
 
-        private Rigidbody2D rb;
+        private Rigidbody2D _rb;
 
         private Vector2 _movement;
         private Vector2 _mousePos;
@@ -36,10 +36,9 @@ namespace GameScene.Player
             moveSpeed -= speed;
         }
 
-
         private void Awake()
         {
-            rb = gameObject.GetComponent<Rigidbody2D>();
+            _rb = gameObject.GetComponent<Rigidbody2D>();
             camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         }
 
@@ -54,11 +53,11 @@ namespace GameScene.Player
 
         void FixedUpdate() 
         {
-            rb.MovePosition(rb.position +_movement * moveSpeed * Time.fixedDeltaTime);
+            _rb.MovePosition(_rb.position +_movement * moveSpeed * Time.fixedDeltaTime);
 
-            Vector2 lookDir = _mousePos - rb.position;
+            Vector2 lookDir = _mousePos - _rb.position;
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = angle;
+            _rb.rotation = angle;
         }
     }
 }
