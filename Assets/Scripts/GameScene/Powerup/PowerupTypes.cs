@@ -1,4 +1,4 @@
-namespace GameScene
+namespace GameScene.Powerup
 {
     public enum PowerupTypes
     {

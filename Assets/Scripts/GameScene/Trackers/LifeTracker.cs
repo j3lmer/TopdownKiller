@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace GameScene
+namespace GameScene.Trackers
 {
     public class LifeTracker : MonoBehaviour
     {

@@ -1,7 +1,8 @@
+using GameScene.Controllers;
 using TMPro;
 using UnityEngine;
 
-namespace GameScene
+namespace GameScene.Trackers
 {
     [RequireComponent(typeof(GameController))]
     public class WaveTracker : MonoBehaviour
@@ -14,6 +15,5 @@ namespace GameScene
             if (waveNumber > GetComponent<GameController>().GetTotalWaves()) return;
             _waveText.SetText($"Wave {waveNumber +1}");
         }
-    
     }
 }

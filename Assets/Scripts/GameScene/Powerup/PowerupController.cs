@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace GameScene
+namespace GameScene.Powerup
 {
     public class PowerupController : MonoBehaviour
     {
@@ -27,7 +26,7 @@ namespace GameScene
                 Vector2 spawnLocation = new Vector2(Random.Range(-25, 25), Random.Range(10 , -10));
                 
                 GameObject powerupGameObject = Instantiate(powerupPrefab, spawnLocation, Quaternion.identity);
-                Powerup.Powerup powerup = powerupGameObject.GetComponent<Powerup.Powerup>();
+                GameScene.Powerup.Powerup powerup = powerupGameObject.GetComponent<GameScene.Powerup.Powerup>();
                 powerup.SetPowerupType(powerupType);
                 powerup.SetColor(colors[powerupType]);
                 

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameScene.Powerup;
+using GameScene.Trackers;
 using UnityEngine;
 
-namespace GameScene
+namespace GameScene.Controllers
 {
     [
         RequireComponent(typeof(EnemyController)), 

@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace GameScene
+namespace GameScene.Controllers
 {
     public class EnemyController : MonoBehaviour
     {
