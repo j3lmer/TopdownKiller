@@ -16,7 +16,6 @@ namespace GameScene
             {
                 _isPlayer = true;
                 _tracker = GameObject.FindGameObjectWithTag("GameController").GetComponent<LifeTracker>();
-
             }
         }
 
@@ -43,14 +42,6 @@ namespace GameScene
             CheckForPlayerHealth();
         }
 
-        public void CheckForPlayerHealth()
-        {
-            if (_isPlayer)
-            {
-                _tracker.UpdateHealth(GetHp());
-            }
-        }
-        
         public int GetLives()
         {
             return _lives;
@@ -67,20 +58,24 @@ namespace GameScene
             _lives += lives;
             CheckForPlayerLives();
         }
+
+        public void SubtractLives(int lives)
+        {
+            _lives -= lives;
+            if (_lives > 0) SetHp(100);
+
+            CheckForPlayerLives();
+        }
         
+        public void CheckForPlayerHealth()
+        {
+            if (_isPlayer) _tracker.UpdateHealth(GetHp());
+
+        }
 
         private void CheckForPlayerLives()
         {
-            if (_isPlayer)
-            {
-                _tracker.UpdateLives(GetLives());
-            }
-
-            if (_lives > 0)
-            {
-                SetHp(100);
-            }
-
+            if (_isPlayer) _tracker.UpdateLives(GetLives());
         }
     }
 }

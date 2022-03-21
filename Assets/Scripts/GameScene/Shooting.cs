@@ -18,9 +18,8 @@ namespace GameScene
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.GetComponent<SpriteRenderer>().color = color;
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-            rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+            bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+            bullet.GetComponent<Bullet>().SetShooterTag(gameObject.tag);
         }
     }
 }

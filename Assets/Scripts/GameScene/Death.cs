@@ -18,7 +18,7 @@ namespace GameScene
             int hp = _health.GetHp();
             if ( hp <= 0)
             {
-                _health.SetLives(_health.GetLives() - 1);
+                _health.SubtractLives(1);
             }
 
             if (_health.GetLives() <= 0)

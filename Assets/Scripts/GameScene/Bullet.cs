@@ -8,30 +8,34 @@ namespace GameScene
         private GameObject hitEffect;
         
         private float _despawnTime = 2f;
-        private float aliveTime = 0f;
+        private float _aliveTime = 0f;
+        private string _shooter;
 
-        
+        public void SetShooterTag(string shooter)
+        {
+            _shooter = shooter;
+        }
+
+        public string GetShooterTag()
+        {
+            return _shooter;
+        }
+
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("Bullet") || col.CompareTag("Powerup")) return;
+            if (col.CompareTag("Enemy") && GetShooterTag() == "Enemy") return;
             
             Health health = col.GetComponent<Health>();
-            if (health)
-            {
-                health.SubtractHp(10);
-            }
+            if (health) health.SubtractHp(10);
             
             Destroy(gameObject);
         }
 
         private void Update()
         {
-            aliveTime += Time.deltaTime;
-
-            if (aliveTime >= _despawnTime)
-            {
-                Destroy(gameObject);
-            }
+            _aliveTime += Time.deltaTime;
+            if (_aliveTime >= _despawnTime) Destroy(gameObject);
         }
     }
 }
