@@ -17,9 +17,23 @@ namespace GameScene.Enemy
         [SerializeField]
         private Transform player;
 
+        private Rigidbody2D rb;
+        private bool _canMove = true;
+
+        public void SetCanMove(bool canMove)
+        {
+            _canMove = canMove;
+        }
+
+        public bool GetCanMove()
+        {
+            return _canMove;
+        }
+
         private void Awake()
         {
             if (GameObject.FindGameObjectWithTag("Player")) player = GameObject.FindGameObjectWithTag("Player").transform;
+            rb = GetComponent<Rigidbody2D>();
         }
         
         private void Update()
@@ -34,13 +48,14 @@ namespace GameScene.Enemy
             float angle               = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
             float enemyPlayerDistance = Vector2.Distance(pos, playerPos);
 
-            gameObject.GetComponent<Rigidbody2D>().rotation = angle;
+            rb.rotation = angle;
             
             Move(pos, playerPos, enemyPlayerDistance);
         }
 
         private void Move(Vector2 pos, Vector2 playerPos, float enemyPlayerDistance)
         {
+            if (!_canMove) return;
             if (enemyPlayerDistance > stoppingDistance) 
             {
                 transform.position = Vector2.MoveTowards

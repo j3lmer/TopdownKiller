@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 135494966}
   - component: {fileID: 135494965}
   m_Layer: 5
-  m_Name: Hp (1)
+  m_Name: Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84b151c648e8da76911b0a0f5478433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waveText: {fileID: 0}
+  _waveText: {fileID: 135494965}
 --- !u!1 &2072540810
 GameObject:
   m_ObjectHideFlags: 0

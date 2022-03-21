@@ -26,6 +26,16 @@ namespace GameScene.Player
             moveSpeed = speed;
         }
 
+        public void AddMoveSpeed(float speed)
+        {
+            moveSpeed += speed;
+        }
+
+        private void SubtractMoveSpeed(float speed)
+        {
+            moveSpeed -= speed;
+        }
+
 
         private void Awake()
         {

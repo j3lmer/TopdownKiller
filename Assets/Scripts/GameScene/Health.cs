@@ -28,16 +28,22 @@ namespace GameScene
         public void SetHp(int newHp)
         {
             _hp = newHp;
-            CheckForPlayer();
+            CheckForPlayerHealth();
         }
 
         public void SubtractHp(int hp)
         {
             _hp -= hp;
-            CheckForPlayer();
+            CheckForPlayerHealth();
         }
 
-        public void CheckForPlayer()
+        public void AddHp(int hp)
+        {
+            _hp += hp;
+            CheckForPlayerHealth();
+        }
+
+        public void CheckForPlayerHealth()
         {
             if (_isPlayer)
             {
@@ -53,15 +59,28 @@ namespace GameScene
         public void SetLives(int newLives)
         {
             _lives = newLives;
+            CheckForPlayerLives();
+        }
+
+        public void AddLives(int lives)
+        {
+            _lives += lives;
+            CheckForPlayerLives();
+        }
+        
+
+        private void CheckForPlayerLives()
+        {
             if (_isPlayer)
             {
-                _tracker.UpdateLives(newLives);
+                _tracker.UpdateLives(GetLives());
             }
 
             if (_lives > 0)
             {
                 SetHp(100);
             }
+
         }
     }
 }
