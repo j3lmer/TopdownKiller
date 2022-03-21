@@ -1,0 +1,29 @@
+Unity Editor version:    2020.3.30f1 (1fb1bf06830e)
+Branch:                  2020.3/staging
+Build type:              Release
+Batch mode:              YES
+System name:             Linux
+Distro version:          #40-Ubuntu SMP Mon Mar 7 08:03:10 UTC 2022
+Kernel version:          5.13.0-35-generic
+Architecture:            x86_64
+Available memory:        7827 MB
+Using pre-set license
+Pro License: NO
+Desktop is 1920 x 1080 @ 60 Hz
+
+COMMAND LINE ARGUMENTS:
+Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/home/j3lmer/projects/TopdownKiller
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+37411
+Successfully changed project path to: /home/j3lmer/projects/TopdownKiller
+/home/j3lmer/projects/TopdownKiller
+Using Asset Import Pipeline V2.

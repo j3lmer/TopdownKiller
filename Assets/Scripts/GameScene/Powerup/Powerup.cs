@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using GameScene.Enemy;
 using GameScene.Player;
 using UnityEngine;
 
@@ -8,6 +10,7 @@ namespace GameScene.Powerup
     public class Powerup : MonoBehaviour
     {
         private int _powerupType;
+        private GameObject _player;
         
         public int GetPowerupType()
         {
@@ -18,11 +21,17 @@ namespace GameScene.Powerup
         {
             _powerupType = powerupType;
         }
+        
+        public void SetColor(Color color)
+        {
+            GetComponent<SpriteRenderer>().color = color;
+        }
 
         private void OnCollisionEnter2D(Collision2D col)
         {
             if(!col.gameObject.CompareTag("Player")) return;
-            Destroy(gameObject);
+            _player = col.gameObject;
+            Destroy(gameObject);    
             ExecutePowerup();
         }
 
@@ -31,42 +40,30 @@ namespace GameScene.Powerup
             switch (_powerupType)
             {
                 case (int) PowerupTypes.RemoveEnemies:
-                    DestroyEnemies();
-                    // setColor(gray);
+                    DestroyEnemies();   
                     break;
                 
                 case (int) PowerupTypes.SpeedboostPlayer:
-                    StartCoroutine(SpeedboostPlayer());
-                    // setColor(blue);
+                    SpeedboostPlayer();
                     break;
                 
                 case (int) PowerupTypes.HealthBoost:
-                    //INVINCIBILITY
-                    // setColor(green);
+                    HealthBoost();
                     break;
                 
                 case (int) PowerupTypes.Points:
-                    //POINTS
-                    // setColor(yellow);
+                    AddPoints();
                     break;
                 
                 case (int) PowerupTypes.StopEnemies:
-                    //STOP_ENEMIES
-                    // setColor(red);
+                    StopEnemies();
                     break;
                 case (int) PowerupTypes.OneUp:
-                    //OneUp
-                    // setColor(green);
+                    OneUp();
                     break;
             }
         }
-
-        private void setColor()
-        {
-            
-        }
         
-
         private void DestroyEnemies()
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -77,13 +74,34 @@ namespace GameScene.Powerup
             }
         }
 
-        private IEnumerator SpeedboostPlayer()
+        private void HealthBoost()
         {
-            PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-            player.SetMoveSpeed(10f);
+            Health playerHealth = _player.GetComponent<Health>();
+            playerHealth.AddHp(50);      
+        }
 
-            yield return new WaitForSeconds(4);
-            player.SetMoveSpeed(5f);
+        private void SpeedboostPlayer()
+        {
+            PlayerMovement playerMovement = _player.GetComponent<PlayerMovement>();
+            playerMovement.AddMoveSpeed(5);
+        }
+
+        private void AddPoints()
+        {
+            _player.GetComponent<Score>().UpdateScore(50);
+        }
+
+        private void StopEnemies()
+        {
+            foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                enemy.GetComponent<EnemyMovement>().SetCanMove(false);
+            }
+        }
+        
+        private void OneUp()
+        {
+            _player.GetComponent<Health>().AddLives(1);
         }
     }
 }

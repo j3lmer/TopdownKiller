@@ -8,5 +8,8 @@ namespace GameScene
         Points = 3,
         StopEnemies = 4,
         OneUp = 5,
+        //faster shot
+        //double shot
+        //triple shot
     }
 }
