@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using FinalScreen.Controllers;
+using GameScene.Player;
 using GameScene.Powerup;
 using GameScene.Trackers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GameScene.Controllers
 {
@@ -25,6 +28,7 @@ namespace GameScene.Controllers
 
         private int _currentWave;
         private int _totalWaves = 3;
+        private bool _hasCompleted = false;
 
         public int GetCurrentWave()
         {
@@ -45,6 +49,20 @@ namespace GameScene.Controllers
         public void SetTotalWaves(int tw)
         {
             _totalWaves = tw;
+        }
+
+        private bool GetHasCompleted()
+        {
+            return _hasCompleted;
+        }
+
+        private void SetHasCompleted(bool hasCompleted)
+        {
+            _hasCompleted = hasCompleted;
+            if (_hasCompleted)
+            {
+                LoadFinalScreen();
+            }
         }
 
         private void Awake()
@@ -149,6 +167,14 @@ namespace GameScene.Controllers
             {
                 StopCoroutine(coroutine);
             });
+        }
+
+        private void LoadFinalScreen()
+        {
+            SceneManager.LoadScene(2);
+            GameObject menuController = GameObject.Find("MenuController");
+            FinalScreenController finalScreenController = menuController.GetComponent<FinalScreenController>();
+            finalScreenController.SetScore(_player.GetComponent<Score>().GetScore());
         }
     }
 }
