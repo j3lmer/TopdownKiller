@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using GameScene.Enemy;
 using GameScene.Player;
 using UnityEngine;

@@ -34,7 +34,7 @@ namespace GameScene.Enemy
             if (_shootTimer > coolDownTime && _player)
             {
                 _shootTimer = 0f;
-                _shooter.Shoot(Color.black);
+                _shooter.Shoot(Color.gray);
             }
         }
 
