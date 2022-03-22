@@ -263,3 +263,9 @@ Received Import Request.
   path: Assets/Resources/Fonts/MachineGunk-nyqg SDF.asset
   artifactKey: Guid(274fa2fefb78dc8d88738796bac4bd4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Resources/Fonts/MachineGunk-nyqg SDF.asset using Guid(274fa2fefb78dc8d88738796bac4bd4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81074e4bd083576b397bfceaff09b1a8') in 0,021993 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 273,286672 seconds.
+  path: Assets/Tiny RPG Forest
+  artifactKey: Guid(70848fc8bd5abcea69079bb7e0ce6424) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiny RPG Forest using Guid(70848fc8bd5abcea69079bb7e0ce6424) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '589d493903c14f268a99184cc7bb39a7') in 0,001505 seconds 
