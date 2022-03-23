@@ -1,4 +1,3 @@
-using System;
 using GameScene.Trackers;
 using UnityEngine;
 
@@ -9,7 +8,18 @@ namespace GameScene
         private int _hp;
         private int _lives;
         private bool _isPlayer;
+        private bool _alive = true;
         private LifeTracker _tracker;
+
+        public bool GetAlive()
+        {
+            return _alive;
+        }
+
+        public void SetAlive(bool alive)
+        {
+            _alive = alive;
+        }
 
         private void Awake()
         {

@@ -24,12 +24,19 @@ namespace GameScene.Player
         {
             _points = score;
             _tracker.UpdateScore(score);
+            UpdatePlayerPrefScore();
         }
 
         public void UpdateScore(int score)
         {
             _points += score;
             _tracker.UpdateScore(GetScore());
+            UpdatePlayerPrefScore();
+        }
+
+        private void UpdatePlayerPrefScore()
+        {
+            PlayerPrefs.SetInt("latestPlayerScore", GetScore());
         }
     }
 }

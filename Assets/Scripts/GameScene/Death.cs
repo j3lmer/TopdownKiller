@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace GameScene
@@ -23,6 +22,7 @@ namespace GameScene
 
             if (_health.GetLives() <= 0)
             {
+                _health.SetAlive(false);
                 Destroy(gameObject);
             }
         }

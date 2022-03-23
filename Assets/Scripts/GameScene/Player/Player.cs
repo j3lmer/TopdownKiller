@@ -11,6 +11,7 @@ namespace GameScene.Player
       private Score _score;
       private float _countingTime;
       private float _timeUntilShoot = 0.2f;
+
       private void Awake()
       {
          _health = GetComponent<Health>();

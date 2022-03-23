@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using FinalScreen.Controllers;
@@ -22,6 +23,7 @@ namespace GameScene.Controllers
         private GameObject playerPrefab;
 
         private GameObject                      _player;
+        private Health                          _playerHealth;
         private EnemyController                 _enemyController;
         private WaveTracker                     _tracker;
         private Dictionary<string, IEnumerator> _enemySpawnerFunctions = new Dictionary<string, IEnumerator>();
@@ -61,7 +63,7 @@ namespace GameScene.Controllers
             _hasCompleted = hasCompleted;
             if (_hasCompleted)
             {
-                LoadFinalScreen();
+                SceneManager.LoadScene(2);
             }
         }
 
@@ -70,10 +72,19 @@ namespace GameScene.Controllers
             _enemyController = GetComponent<EnemyController>();
             _tracker         = GetComponent<WaveTracker>();
             _player          = MakePlayer();
+            _playerHealth    = _player.GetComponent<Health>();
             
             SetupSpawnerFunctionsList();
             _tracker.UpdateWaveText(0);
             StartCoroutine(WaveController());
+        }
+        
+        private void Update()
+        {
+            if (!_playerHealth.GetAlive())
+            {
+                SetHasCompleted(true);
+            }
         }
 
         private void SetupSpawnerFunctionsList()
@@ -98,8 +109,6 @@ namespace GameScene.Controllers
         {
             // TODO: Maak lijst aan Ienumerator functies die verschillende soorten enemies spawnen (net als spawnDefaultEnemies). Loop een paar keer, als index deelbaar is door X, spawn dan andere soort enemies, spawn soms random enemies.
             bool finished = false;
-
-            // Debug.Log("wavecontroller started");
             Task task = new Task(StartWaves(3, _enemySpawnerFunctions["default"], 20));
             
             task.Finished += delegate(bool manual)
@@ -108,8 +117,8 @@ namespace GameScene.Controllers
             };
 
             yield return new WaitUntil(() => finished);
-            // Debug.Log("wavecontroller finished");
             finished = false;
+            SetHasCompleted(true);
         }
 
         // Sets total amount of waves, starts them, gives some extra time between waves
@@ -167,14 +176,6 @@ namespace GameScene.Controllers
             {
                 StopCoroutine(coroutine);
             });
-        }
-
-        private void LoadFinalScreen()
-        {
-            SceneManager.LoadScene(2);
-            GameObject menuController = GameObject.Find("MenuController");
-            FinalScreenController finalScreenController = menuController.GetComponent<FinalScreenController>();
-            finalScreenController.SetScore(_player.GetComponent<Score>().GetScore());
         }
     }
 }

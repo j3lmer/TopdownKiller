@@ -19,7 +19,6 @@ namespace FinalScreen.Controllers
         private int _selected = 0;
         private int _score;
         private Color _defaultColor;
-        //private bool died?
 
         public int GetScore()
         {
@@ -29,6 +28,7 @@ namespace FinalScreen.Controllers
         public void SetScore(int score)
         {
             _score = score;
+            scoreText.SetText($"Score: {GetScore()}");
         }
 
         private void Awake()
@@ -36,7 +36,8 @@ namespace FinalScreen.Controllers
             _defaultColor = letters[_selected].color;
             SetButtonListeners();
             titleText.SetText("hoi");
-            scoreText.SetText($"Score: {GetScore()}");
+            SetScore(PlayerPrefs.GetInt("latestPlayerScore"));
+            PlayerPrefs.SetInt("latestPlayerScore", 0);
         }
 
 

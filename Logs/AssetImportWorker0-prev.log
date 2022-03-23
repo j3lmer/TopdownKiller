@@ -3,8 +3,8 @@ Branch:                  2020.3/staging
 Build type:              Release
 Batch mode:              YES
 System name:             Linux
-Distro version:          #40-Ubuntu SMP Mon Mar 7 08:03:10 UTC 2022
-Kernel version:          5.13.0-35-generic
+Distro version:          #42-Ubuntu SMP Tue Mar 15 14:34:06 UTC 2022
+Kernel version:          5.13.0-37-generic
 Architecture:            x86_64
 Available memory:        7827 MB
 Using pre-set license
@@ -23,11 +23,11 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-38707
+45935
 Successfully changed project path to: /home/j3lmer/projects/TopdownKiller
 /home/j3lmer/projects/TopdownKiller
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 63,60 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 70,30 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
 Initialize engine version: 2020.3.30f1 (1fb1bf06830e)
 [Subsystems] Discovering subsystems at path /home/j3lmer/Applications/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Resources/UnitySubsystems
@@ -43,44 +43,44 @@ int_sprite GL_ARB_polygon_offset_clamp GL_ARB_post_depth_coverage GL_ARB_program
 L_ARB_texture_buffer_object GL_ARB_texture_buffer_object_rgb32 GL_ARB_texture_buffer_range GL_ARB_texture_compression_bptc GL_ARB_texture_compression_rgtc GL_ARB_texture_cube_map_array GL_ARB_texture_filter_anisotropic GL_ARB_texture_float GL_ARB_texture_gather GL_ARB_texture_mirror_clamp_to_edge GL_ARB_texture_multisample GL_ARB_texture_non_power_of_two GL_ARB_texture_query_levels GL_ARB_texture_query_lod GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_texture_rgb10_a2ui GL_ARB_texture_stencil8 GL_ARB_texture_storage GL_ARB_texture_storage_multisample GL_ARB_texture_swizzle GL_ARB_texture_view GL_ARB_timer_query GL_ARB_transform_feedback2 GL_ARB_transform_feedback3 GL_ARB_transform_feedback_instanced GL_ARB_transform_feedback_overflow_query GL_ARB_uniform_buffer_object GL_ARB_vertex_array_bgra GL_ARB_vertex_array_object GL_ARB_vertex_attrib_64bit GL_ARB_vertex_attrib_binding GL_ARB_vertex_buffer_object GL_ARB_vertex_shader GL_ARB_vertex_type_10f_11f_11f_rev GL_ARB_vertex_type_2_10_10_10_rev GL_ARB_viewpor
 t_array GL_ATI_blend_equation_separate GL_ATI_texture_float GL_EXT_EGL_image_storage GL_EXT_EGL_sync GL_EXT_abgr GL_EXT_blend_equation_separate GL_EXT_demote_to_helper_invocation GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_framebuffer_object GL_EXT_framebuffer_sRGB GL_EXT_memory_object GL_EXT_memory_object_fd GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_pixel_buffer_object GL_EXT_polygon_offset_clamp GL_EXT_provoking_vertex GL_EXT_semaphore GL_EXT_semaphore_fd GL_EXT_shader_framebuffer_fetch GL_EXT_shader_framebuffer_fetch_non_coherent GL_EXT_shader_integer_mix GL_EXT_shader_samples_identical GL_EXT_texture_array GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_filter_anisotropic GL_EXT_texture_integer GL_EXT_texture_sRGB GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_decode GL_EXT_texture_shadow_lod GL_EXT_texture_shared_exponent GL_EXT_t
 exture_snorm GL_EXT_texture_swizzle GL_EXT_timer_query GL_EXT_transform_feedback GL_EXT_vertex_array_bgra GL_EXT_vertex_attrib_64bit GL_IBM_multimode_draw_arrays GL_INTEL_blackhole_render GL_INTEL_conservative_rasterization GL_INTEL_performance_query GL_INTEL_shader_atomic_float_minmax GL_INTEL_shader_integer_functions2 GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_KHR_context_flush_control GL_KHR_debug GL_KHR_no_error GL_KHR_parallel_shader_compile GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_KHR_texture_compression_astc_ldr GL_KHR_texture_compression_astc_sliced_3d GL_MESA_framebuffer_flip_y GL_MESA_pack_invert GL_MESA_shader_integer_functions GL_MESA_texture_signed_rgba GL_NV_compute_shader_derivatives GL_NV_conditional_render GL_NV_copy_image GL_NV_depth_clamp GL_NV_fragment_shader_interlock GL_NV_packed_depth_stencil GL_NV_texture_barrier GL_OES_EGL_image GL_S3_s3tc
-OPENGL LOG: Creating OpenGL 4.6 graphics device ; Context level  <OpenGL 4.5> ; Context handle 1314437808
+OPENGL LOG: Creating OpenGL 4.6 graphics device ; Context level  <OpenGL 4.5> ; Context handle -1541543504
 Initialize mono
 Mono path[0] = '/home/j3lmer/Applications/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed'
 Mono path[1] = '/home/j3lmer/Applications/Unity/Hub/Editor/2020.3.30f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/home/j3lmer/Applications/Unity/Hub/Editor/2020.3.30f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56203
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56064
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /home/j3lmer/Applications/Unity/Hub/Editor/2020.3.30f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: /home/j3lmer/Applications/Unity/Hub/Editor/2020.3.30f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0,002388 seconds.
+Registered in 0,002433 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 60,64 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 60,57 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0,868 seconds
+- Completed reload, in  1,048 seconds
 Domain Reload Profiling:
-	ReloadAssembly (868ms)
-		BeginReloadAssembly (80ms)
+	ReloadAssembly (1048ms)
+		BeginReloadAssembly (91ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (691ms)
-			LoadAssemblies (78ms)
+			CreateAndSetChildDomain (3ms)
+		EndReloadAssembly (819ms)
+			LoadAssemblies (103ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (210ms)
+			SetupTypeCache (289ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (47ms)
-			SetupLoadedEditorAssemblies (310ms)
+			RebuildScriptCaches (48ms)
+			SetupLoadedEditorAssemblies (327ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (7ms)
-				SetLoadedEditorAssemblies (0ms)
+				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (61ms)
 				BeforeProcessingInitializeOnLoad (12ms)
-				ProcessInitializeOnLoadAttributes (189ms)
+				ProcessInitializeOnLoadAttributes (206ms)
 				ProcessInitializeOnLoadMethodAttributes (40ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
@@ -88,52 +88,52 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0,002672 seconds.
+Registered in 0,002716 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 58,71 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 57,38 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1,549 seconds
+- Completed reload, in  1,886 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1550ms)
-		BeginReloadAssembly (198ms)
+	ReloadAssembly (1887ms)
+		BeginReloadAssembly (283ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
+			DisableScriptedObjects (8ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (22ms)
-		EndReloadAssembly (1272ms)
-			LoadAssemblies (125ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (1526ms)
+			LoadAssemblies (295ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (395ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (75ms)
-			SetupLoadedEditorAssemblies (536ms)
+			SetupTypeCache (405ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (77ms)
+			SetupLoadedEditorAssemblies (552ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (59ms)
-				BeforeProcessingInitializeOnLoad (89ms)
-				ProcessInitializeOnLoadAttributes (352ms)
-				ProcessInitializeOnLoadMethodAttributes (23ms)
+				RefreshPlugins (57ms)
+				BeforeProcessingInitializeOnLoad (91ms)
+				ProcessInitializeOnLoadAttributes (368ms)
+				ProcessInitializeOnLoadMethodAttributes (22ms)
 				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (10ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
-Refreshing native plugins compatible for Editor in 1,03 ms, found 1 plugins.
+Launched and connected shader compiler UnityShaderCompiler after 0.09 seconds
+Refreshing native plugins compatible for Editor in 0,88 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
-Unloading 2262 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 2263 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 93,9 MB.
 System memory in use after: 93,9 MB.
 
-Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2700.
-Total: 9,697614 ms (FindLiveObjects: 0,511351 ms CreateObjectMapping: 0,178819 ms MarkObjects: 8,674446 ms  DeleteObjects: 0,330110 ms)
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2701.
+Total: 7,768141 ms (FindLiveObjects: 0,208651 ms CreateObjectMapping: 0,155472 ms MarkObjects: 7,066034 ms  DeleteObjects: 0,335919 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -146,126 +146,13 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Tiny RPG Forest/Artwork/sprites/mole/idle/mole-idle-side.png
-  artifactKey: Guid(a52d43b4ff4dc4dfb99b796681f175fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Tiny RPG Forest/Artwork/sprites/mole/idle/mole-idle-side.png using Guid(a52d43b4ff4dc4dfb99b796681f175fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be0921284220dd0a7157cf549945c5e7') in 0,134620 seconds 
+  path: Assets/Scenes/FinalScreen.unity
+  artifactKey: Guid(f378058834fd64144a34eb2ead97c833) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/FinalScreen.unity using Guid(f378058834fd64144a34eb2ead97c833) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0dd3a85c4b4ee92c17073601f136bfc5') in 0,075332 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0,000275 seconds.
-  path: Assets/Tiny RPG Forest/Artwork/sprites/mole/idle/mole-idle-front.png
-  artifactKey: Guid(7cefe9e9e8c984bbd9ff43235be8f54f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Tiny RPG Forest/Artwork/sprites/mole/idle/mole-idle-front.png using Guid(7cefe9e9e8c984bbd9ff43235be8f54f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ce1a6ee8e322b632c7258ac5e4ca82f') in 0,006801 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000376 seconds.
-  path: Assets/Tiny RPG Forest/Artwork/sprites/misc/coin/coin-1.png
-  artifactKey: Guid(03b3b03d94fe64ca991436d28accda10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Tiny RPG Forest/Artwork/sprites/misc/coin/coin-1.png using Guid(03b3b03d94fe64ca991436d28accda10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1a25d720bff71e6c192c02250800c07') in 0,007364 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000263 seconds.
-  path: Assets/Tiny RPG Forest/Artwork/sprites/misc/arrow.png
-  artifactKey: Guid(95406b6737b66479a80d172766f8bac5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Tiny RPG Forest/Artwork/sprites/misc/arrow.png using Guid(95406b6737b66479a80d172766f8bac5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d820cf2c0cfe95df245f0eebe9b414d') in 0,007305 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000316 seconds.
-  path: Assets/Warped Caves/Artwork/Environment/middleground.png
-  artifactKey: Guid(a5bed8c8e77ee4c34990d94b94cb2afe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Warped Caves/Artwork/Environment/middleground.png using Guid(a5bed8c8e77ee4c34990d94b94cb2afe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10a38d51efe5a0bd5d774b59eada5ab4') in 0,010866 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000360 seconds.
-  path: Assets/Tiny RPG Forest/Artwork/sprites/mole/idle/mole-idle-back.png
-  artifactKey: Guid(c5ab53f1aba4f405b838d610445575ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Tiny RPG Forest/Artwork/sprites/mole/idle/mole-idle-back.png using Guid(c5ab53f1aba4f405b838d610445575ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d0ee33244fe5692a88b22a362f4c7b0') in 0,010816 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000270 seconds.
-  path: Assets/Warped Caves/Artwork/Environment/background.png
-  artifactKey: Guid(20d00314efef34b5f8d3b0d3f4353b19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Warped Caves/Artwork/Environment/background.png using Guid(20d00314efef34b5f8d3b0d3f4353b19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fc9ec23716d61268ac7b2ada3c42836') in 0,009508 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000279 seconds.
-  path: Assets/Warped Caves/Artwork/Environment/middleground-no-fungus.png
-  artifactKey: Guid(b66d951e7d54f45e88bab99f63c58a70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Warped Caves/Artwork/Environment/middleground-no-fungus.png using Guid(b66d951e7d54f45e88bab99f63c58a70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7202f9c0d4625af88f5c18f7ffd1672e') in 0,011620 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000281 seconds.
-  path: Assets/Tiny RPG Forest/Artwork/Environment/sliced-objects/bush.png
-  artifactKey: Guid(dbc624f7b3a644dcf989e434e63d9a98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Tiny RPG Forest/Artwork/Environment/sliced-objects/bush.png using Guid(dbc624f7b3a644dcf989e434e63d9a98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c3f3beeb20ca8ae6f59257a9af3e27e') in 0,008688 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000342 seconds.
-  path: Assets/Tiny RPG Forest/Artwork/Environment/sliced-objects/bush-tall.png
-  artifactKey: Guid(aa94c6da14ecf4a8690f02549a9ac6a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Tiny RPG Forest/Artwork/Environment/sliced-objects/bush-tall.png using Guid(aa94c6da14ecf4a8690f02549a9ac6a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '605c8f6c013b3d806673fc7e8911b5f6') in 0,006930 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000634 seconds.
-  path: Assets/Resources/Images/menuBackground.jpg
-  artifactKey: Guid(dcaa24ad7721245c7b7afd548676dbe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Images/menuBackground.jpg using Guid(dcaa24ad7721245c7b7afd548676dbe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c3c82e883036f1212499d35f465bfe5') in 0,013883 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 47,087287 seconds.
-  path: Assets/Tiny RPG Forest/Artwork/sprites/mole/walk/mole-walk-back/mole-walk-back-1.png
-  artifactKey: Guid(74e87f172e20d4e2395c7cc5c70f5431) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Tiny RPG Forest/Artwork/sprites/mole/walk/mole-walk-back/mole-walk-back-1.png using Guid(74e87f172e20d4e2395c7cc5c70f5431) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6248d3bf470ee6bba3f58e7f2b92e840') in 0,008519 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 109,528192 seconds.
-  path: Assets/Scenes
-  artifactKey: Guid(131a6b21c8605f84396be9f6751fb6e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes using Guid(131a6b21c8605f84396be9f6751fb6e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df75b7d1a31c5b4f73fd45661b403b04') in 0,000833 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,477277 seconds.
-  path: Assets/Scripts
-  artifactKey: Guid(645b0b2534f2289d4a6b62cb8ee59feb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts using Guid(645b0b2534f2289d4a6b62cb8ee59feb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50120d6d1006c1831e404183912a2403') in 0,000720 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 38,227462 seconds.
-  path: Assets/Resources/Fonts/DebugFreeTrial-MVdYB.otf
-  artifactKey: Guid(17db05ae0515867228de972122be9b24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Fonts/DebugFreeTrial-MVdYB.otf using Guid(17db05ae0515867228de972122be9b24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b86f14baaf4e995c47ea72e938bcad0') in 0,132086 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000549 seconds.
-  path: Assets/Resources/Fonts/MachineGunk-nyqg.ttf
-  artifactKey: Guid(13d6d6d2d1b5ae84fbab2259203bf481) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Fonts/MachineGunk-nyqg.ttf using Guid(13d6d6d2d1b5ae84fbab2259203bf481) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ae13d575d2952adfc2c2c847719a4fd') in 0,020179 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 114,663313 seconds.
-  path: Assets/Resources/Fonts/DebugFreeTrial-MVdYB SDF.asset
-  artifactKey: Guid(4cc52aa4d71e56bc8a507a8ace607561) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Fonts/DebugFreeTrial-MVdYB SDF.asset using Guid(4cc52aa4d71e56bc8a507a8ace607561) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1460bd209d92866afc575686ab3f66a') in 0,046138 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 15,502898 seconds.
-  path: Assets/Resources/Fonts/MachineGunk-nyqg SDF.asset
-  artifactKey: Guid(274fa2fefb78dc8d88738796bac4bd4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Fonts/MachineGunk-nyqg SDF.asset using Guid(274fa2fefb78dc8d88738796bac4bd4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3179b243b4c0b881e9f2eec93aa415e4') in 0,018569 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 59,430200 seconds.
-  path: Assets/Resources/Fonts/DebugFreeTrial-MVdYB SDF.asset
-  artifactKey: Guid(4cc52aa4d71e56bc8a507a8ace607561) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Fonts/DebugFreeTrial-MVdYB SDF.asset using Guid(4cc52aa4d71e56bc8a507a8ace607561) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '275ac0d194f8b140dbb248ba80ea62e8') in 0,018972 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0,000286 seconds.
-  path: Assets/Resources/Fonts/MachineGunk-nyqg SDF.asset
-  artifactKey: Guid(274fa2fefb78dc8d88738796bac4bd4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Fonts/MachineGunk-nyqg SDF.asset using Guid(274fa2fefb78dc8d88738796bac4bd4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81074e4bd083576b397bfceaff09b1a8') in 0,021993 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 273,286672 seconds.
-  path: Assets/Tiny RPG Forest
-  artifactKey: Guid(70848fc8bd5abcea69079bb7e0ce6424) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Tiny RPG Forest using Guid(70848fc8bd5abcea69079bb7e0ce6424) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '589d493903c14f268a99184cc7bb39a7') in 0,001505 seconds 
+  Time since last request: 35,169091 seconds.
+  path: Assets/Scenes/FinalScreen.unity
+  artifactKey: Guid(f378058834fd64144a34eb2ead97c833) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/FinalScreen.unity using Guid(f378058834fd64144a34eb2ead97c833) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e03e3ff48a07df8d7fdfb6eafd70961b') in 0,001262 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
