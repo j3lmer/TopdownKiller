@@ -6,7 +6,7 @@ namespace FinalScreen
     [Serializable]
     public class HighscorePlayerData
     {
-        [SerializeField] public string name;
-        [SerializeField] public float score;
+        public string name;
+        public float score;
     }
 }

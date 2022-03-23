@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace FinalScreen.Controllers
@@ -28,9 +30,9 @@ namespace FinalScreen.Controllers
             return File.ReadAllText(_highscoreStorageFile);
         }
 
-        public HighscorePlayers ConvertRawTextToPlayers(string rawData)
+        public List<HighscorePlayerData> ConvertRawTextToPlayers(string rawData)
         {
-            return JsonUtility.FromJson<HighscorePlayers>(rawData);
+            return JsonConvert.DeserializeObject<List<HighscorePlayerData>>(rawData);
         }
 
         public void SaveToFile(string json)

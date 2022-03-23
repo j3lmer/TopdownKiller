@@ -7,6 +7,6 @@ namespace FinalScreen
     [Serializable]
     public class HighscorePlayers
     {
-        [SerializeField] public List<HighscorePlayerData> highscorePlayerData = new List<HighscorePlayerData>();
+        public List<HighscorePlayerData> highscorePlayerData = new List<HighscorePlayerData>();
     }
 }

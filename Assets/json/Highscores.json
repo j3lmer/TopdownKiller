@@ -1,6 +1,10 @@
 [
   {
     "name": "AAA",
-    "score": 0.0
+    "score": 10.0
+  },
+  {
+    "name": "BAA",
+    "score": 10.0
   }
 ]

@@ -18,6 +18,7 @@ namespace FinalScreen
         private void Awake()
         {
             _helper = GetComponent<HighscoreManagerHelper>();
+            _hsPlayers = new HighscorePlayers();
         }
 
         /*
@@ -30,12 +31,12 @@ namespace FinalScreen
         public void AddOrUpdateHighscore(string playerName, int score)
         {
             _busy = true;
-            _hsPlayers = _helper.ConvertRawTextToPlayers(_helper.GetStorageFileRaw());
+            _hsPlayers.highscorePlayerData = _helper.ConvertRawTextToPlayers(_helper.GetStorageFileRaw());
 
             _localScore = score;
             _localPlayerName = playerName;
             _helper.SaveToFile(UpdateList());
-
+            
             _localScore = 0;
             _localPlayerName = "";
             _busy = false;
@@ -81,7 +82,7 @@ namespace FinalScreen
         }
 
         //let er op dat deze nooit tegelijk met sethighscores word gecalled
-        public HighscorePlayers GetHighscores()
+        public List<HighscorePlayerData> GetHighscores()
         {
             return _helper.ConvertRawTextToPlayers(_helper.GetStorageFileRaw());
         }
