@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace FinalScreen.Controllers
@@ -40,13 +41,13 @@ namespace FinalScreen.Controllers
         {
             _highscoreManager = GetComponent<HighscoreManager>();
             _defaultColor = letters[_selected].color;
-            
+
             SetButtonListeners();
             titleText.SetText("hoi");
             SetScore(PlayerPrefs.GetInt("latestPlayerScore"));
             PlayerPrefs.SetInt("latestPlayerScore", 0);
         }
-        
+
         private void Update()
         {
             BlinkLetter();
@@ -80,7 +81,7 @@ namespace FinalScreen.Controllers
                 NextLetterIndex,
                 Submit
             };
-            
+
             for (int i = 0; i < buttons.Length; i++)
             {
                 var i1 = i;
@@ -90,7 +91,6 @@ namespace FinalScreen.Controllers
 
         private void NextLetter()
         {
-            Debug.Log("clicked");
             letterIndexes[_selected] = letterIndexes[_selected] >= 38 ? 0 : letterIndexes[_selected] + 1;
             letters[_selected].text = _alphabet[letterIndexes[_selected]].ToString();
         }
@@ -112,8 +112,9 @@ namespace FinalScreen.Controllers
             StringBuilder sb = new StringBuilder();
             foreach (TMP_Text letter in letters) sb.Append(letter.text);
             string playerName = sb.ToString();
-            
+
             _highscoreManager.AddOrUpdateHighscore(playerName, GetScore());
+            SceneManager.LoadScene(0);
         }
     }
 }

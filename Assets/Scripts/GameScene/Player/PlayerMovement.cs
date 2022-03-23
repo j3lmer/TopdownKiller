@@ -5,11 +5,8 @@ namespace GameScene.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField]
-        private Camera camera;
-
-        [SerializeField]
-        private float moveSpeed = 5f;
+        [SerializeField] private Camera camera;
+        [SerializeField] private float moveSpeed = 5f;
 
         private Rigidbody2D _rb;
 
@@ -51,9 +48,9 @@ namespace GameScene.Player
             _mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        void FixedUpdate() 
+        void FixedUpdate()
         {
-            _rb.MovePosition(_rb.position +_movement * moveSpeed * Time.fixedDeltaTime);
+            _rb.MovePosition(_rb.position + _movement * moveSpeed * Time.fixedDeltaTime);
 
             Vector2 lookDir = _mousePos - _rb.position;
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;

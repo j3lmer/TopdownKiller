@@ -11,14 +11,14 @@ namespace GameScene.Enemy
         private Shooting _shooter;
         private Health _health;
 
-        [SerializeField] 
-        private float coolDownTime = 0.5f;
+        [SerializeField] private float coolDownTime = 0.5f;
 
         private float _shootTimer;
+
         private void Awake()
         {
             _shooter = GetComponent<Shooting>();
-            _health  = GetComponent<Health>();
+            _health = GetComponent<Health>();
             _health.SetHp(50);
             _health.SetLives(1);
 
@@ -44,7 +44,6 @@ namespace GameScene.Enemy
             {
                 _player.GetComponent<Score>().UpdateScore(10);
             }
-            
         }
     }
 }

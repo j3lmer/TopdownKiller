@@ -19,7 +19,7 @@ namespace GameScene.Player
         {
             return _points;
         }
-        
+
         public void SetScore(int score)
         {
             _points = score;

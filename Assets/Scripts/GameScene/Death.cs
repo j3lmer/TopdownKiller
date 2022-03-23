@@ -15,7 +15,7 @@ namespace GameScene
         private void Update()
         {
             int hp = _health.GetHp();
-            if ( hp <= 0)
+            if (hp <= 0)
             {
                 _health.SubtractLives(1);
             }

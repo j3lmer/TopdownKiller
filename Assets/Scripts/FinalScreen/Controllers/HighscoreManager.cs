@@ -26,27 +26,27 @@ namespace FinalScreen
          * check of er in de spelers al een speler is met dezelfde naam, update die als hij een hogere score heeft, sla op
          * maak een nieuwe speler aan
          */
-        
+
         public void AddOrUpdateHighscore(string playerName, int score)
         {
             _busy = true;
             _hsPlayers = _helper.ConvertRawTextToPlayers(_helper.GetStorageFileRaw());
-            
+
             _localScore = score;
             _localPlayerName = playerName;
-            _helper.SaveToFile( UpdateList());
-            
+            _helper.SaveToFile(UpdateList());
+
             _localScore = 0;
             _localPlayerName = "";
             _busy = false;
         }
-        
+
         private string UpdateList()
         {
             //Create new HighscorePlayerData if object is empty
             if (_hsPlayers == null) return CreateAndConvertNewPlayer();
             int index = _hsPlayers.highscorePlayerData.FindIndex(p => p.name == _localPlayerName);
-            
+
             if (index == -1) return CreateAndConvertNewPlayer();
 
             HighscorePlayerData player = _hsPlayers.highscorePlayerData[index];
@@ -56,7 +56,7 @@ namespace FinalScreen
             player.score = _localScore > player.score ? _localScore : player.score;
             _hsPlayers.highscorePlayerData[index] = player;
 
-            return ConvertToString( _hsPlayers.highscorePlayerData);
+            return ConvertToString(_hsPlayers.highscorePlayerData);
         }
 
         private string CreateAndConvertNewPlayer()

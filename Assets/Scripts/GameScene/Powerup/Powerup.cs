@@ -8,7 +8,7 @@ namespace GameScene.Powerup
     {
         private int _powerupType;
         private GameObject _player;
-        
+
         public int GetPowerupType()
         {
             return _powerupType;
@@ -18,7 +18,7 @@ namespace GameScene.Powerup
         {
             _powerupType = powerupType;
         }
-        
+
         public void SetColor(Color color)
         {
             GetComponent<SpriteRenderer>().color = color;
@@ -26,9 +26,9 @@ namespace GameScene.Powerup
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if(!col.gameObject.CompareTag("Player")) return;
+            if (!col.gameObject.CompareTag("Player")) return;
             _player = col.gameObject;
-            Destroy(gameObject);    
+            Destroy(gameObject);
             ExecutePowerup();
         }
 
@@ -37,21 +37,21 @@ namespace GameScene.Powerup
             switch (_powerupType)
             {
                 case (int) PowerupTypes.RemoveEnemies:
-                    DestroyEnemies();   
+                    DestroyEnemies();
                     break;
-                
+
                 case (int) PowerupTypes.SpeedboostPlayer:
                     SpeedboostPlayer();
                     break;
-                
+
                 case (int) PowerupTypes.HealthBoost:
                     HealthBoost();
                     break;
-                
+
                 case (int) PowerupTypes.Points:
                     AddPoints();
                     break;
-                
+
                 case (int) PowerupTypes.StopEnemies:
                     StopEnemies();
                     break;
@@ -60,11 +60,11 @@ namespace GameScene.Powerup
                     break;
             }
         }
-        
+
         private void DestroyEnemies()
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            
+
             foreach (GameObject enemy in enemies)
             {
                 Destroy(enemy);
@@ -74,7 +74,7 @@ namespace GameScene.Powerup
         private void HealthBoost()
         {
             Health playerHealth = _player.GetComponent<Health>();
-            playerHealth.AddHp(50);      
+            playerHealth.AddHp(50);
         }
 
         private void SpeedboostPlayer()
@@ -90,12 +90,12 @@ namespace GameScene.Powerup
 
         private void StopEnemies()
         {
-            foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
             {
                 enemy.GetComponent<EnemyMovement>().SetCanMove(false);
             }
         }
-        
+
         private void OneUp()
         {
             _player.GetComponent<Health>().AddLives(1);

@@ -77,11 +77,10 @@ namespace GameScene
 
             CheckForPlayerLives();
         }
-        
+
         public void CheckForPlayerHealth()
         {
             if (_isPlayer) _tracker.UpdateHealth(GetHp());
-
         }
 
         private void CheckForPlayerLives()

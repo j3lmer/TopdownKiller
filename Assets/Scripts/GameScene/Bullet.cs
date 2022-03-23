@@ -4,9 +4,8 @@ namespace GameScene
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject hitEffect;
-        
+        [SerializeField] private GameObject hitEffect;
+
         private float _despawnTime = 2f;
         private float _aliveTime = 0f;
         private string _shooter;
@@ -25,10 +24,10 @@ namespace GameScene
         {
             if (col.CompareTag("Bullet") || col.CompareTag("Powerup")) return;
             if (col.CompareTag("Enemy") && GetShooterTag() == "Enemy") return;
-            
+
             Health health = col.GetComponent<Health>();
             if (health) health.SubtractHp(10);
-            
+
             Destroy(gameObject);
         }
 
