@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using FinalScreen.Controllers;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace FinalScreen
+namespace FinalScreen.Controllers
 {
     [RequireComponent(typeof(HighscoreManagerHelper))]
     public class HighscoreManager : MonoBehaviour
@@ -13,8 +11,6 @@ namespace FinalScreen
         private HighscorePlayers _hsPlayers;
         private string _localPlayerName = "";
         private int _localScore;
-        private bool _busy;
-
         private void Awake()
         {
             _helper = GetComponent<HighscoreManagerHelper>();
@@ -30,7 +26,6 @@ namespace FinalScreen
 
         public void AddOrUpdateHighscore(string playerName, int score)
         {
-            _busy = true;
             _hsPlayers.highscorePlayerData = _helper.ConvertRawTextToPlayers(_helper.GetStorageFileRaw());
 
             _localScore = score;
@@ -39,7 +34,6 @@ namespace FinalScreen
             
             _localScore = 0;
             _localPlayerName = "";
-            _busy = false;
         }
 
         private string UpdateList()
