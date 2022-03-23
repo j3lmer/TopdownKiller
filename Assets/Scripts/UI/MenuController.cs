@@ -1,111 +1,60 @@
+using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
 {
+	[RequireComponent(typeof(UIHelper))]
 	public class MenuController : MonoBehaviour
 	{
-		//TODO: MAKE BACK BTN INSTEAD OF HOME
+		[SerializeField] private Button[] buttons;
 
-		//variables for accessing menus + canvas
-		GameObject _menuObject;
-		Canvas _canvas;
-		List<GameObject> _menuList = new List<GameObject>();
-
-
-		private void Start()
-		{
-			/* 
-			* retrieves all menu gameobjects + canvas.
-			* then sets onclickListeners to all buttons inside.
-			*/
-			GetMenuObjects();
-			if (Debug.isDebugBuild)
-			{
-				Debug.Log("This is the (latest) debug build!");
-			}
+		private UIHelper _uiHelper;
+		private GameObject _canvas;
 		
-		}
-		void GetMenuObjects()
+		private void Awake()
 		{
-			_menuObject = GameObject.Find("MenuObject");
-			Debug.Log(_menuObject);
-
-			_canvas = _menuObject.GetComponentInChildren<Canvas>();
-			var canvasTransform = _canvas.transform;
-
-			//loop through canvas children and if its part of the vertical layoutgroup, it must a menu gameobject. 
-			//so then add it to the list, and set an onclicklistener for the specific button
-			for (var i=0; i< canvasTransform.childCount; i++)
-			{
-				var thisObj = canvasTransform.GetChild(i);
-			
-				if (thisObj.GetComponent<VerticalLayoutGroup>())
-				{
-					var thisGameObj = thisObj.gameObject;
-					_menuList.Add(thisGameObj);
-					setOnClickListeners(thisGameObj);
-				}
-			}
+			_canvas = GameObject.Find("Canvas");
+			_uiHelper = GetComponent<UIHelper>();
+			SetupButtons();
 		}
 
-		void setOnClickListeners(GameObject menu) 
+		private void SetupButtons()
 		{
-			//menu is one of the children on canvas.
-			var menuTransform = menu.transform;
-		
-			for(var i=0; i<menuTransform.childCount; i++)
-			{
-				Transform thisObj = menuTransform.GetChild(i);
-				if(thisObj == null)
+			_uiHelper.SetButtonListeners(new List<Action>
 				{
-					print("breaking");
-					break;
-				}
-			
-				//GameObject thisGameObject = thisObj.gameObject;
-				Button thisBtn = thisObj.GetComponent<Button>();	
-
-				//add onclicklistener to any non-untagged button
-				if (thisBtn != null && !thisBtn.CompareTag("Untagged"))
-				{
-					thisBtn.onClick.AddListener(delegate { CheckBtnTag(thisBtn); });
-				}			
-			}		
+					StartGame,
+					ShowExplanation,
+					ShowHighscores,
+					Quit
+				}, buttons
+			);
 		}
 
-		void CheckBtnTag(Button thisBtn)
+		private void StartGame()
 		{
-			switch (thisBtn.tag)
-			{
-				case "START":
-					SceneManager.LoadScene(1);
-					break;
+			SceneManager.LoadScene(1);
+		}
 
-				case "EXPLANATION":
-					ShowExplanation();
-					break;
+		private void ShowExplanation()
+		{
+			Transform menuTransform = _canvas.transform.Find("MainMenu");
+			_uiHelper.Hospital(menuTransform, false);
+			//re-enable andere pre-made components
+		}
 
-				case "QUIT":
-					Exit();
-					break;
-			}
+		private void ShowHighscores()
+		{
+			Transform menuTransform = _canvas.transform.Find("MainMenu");
+			_uiHelper.Hospital(menuTransform, false);
+			//re-enable andere pre-made components
 		}
 		
-
-		void ShowExplanation()
-		{		
-			
-		}
-
-
-		public void Exit()
+		private void Quit()
 		{
 			Application.Quit();
 		}
-
 	}
 }

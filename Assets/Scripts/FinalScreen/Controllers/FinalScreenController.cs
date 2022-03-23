@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace FinalScreen.Controllers
 {
-    [RequireComponent(typeof(HighscoreManager))]
+    [RequireComponent(typeof(HighscoreManager)), RequireComponent(typeof(UIHelper))]
     public class FinalScreenController : MonoBehaviour
     {
         [SerializeField] private TMP_Text titleText;
@@ -18,6 +19,7 @@ namespace FinalScreen.Controllers
         [SerializeField] private Button[] buttons;
 
         private HighscoreManager _highscoreManager;
+        private UIHelper _helper;
 
         private int[] letterIndexes = {0, 0, 0};
         private readonly char[] _alphabet = "ABCDEFGHIJKLMNOPQRSTUVWQXYZ0123456789!?".ToCharArray();
@@ -39,10 +41,11 @@ namespace FinalScreen.Controllers
 
         private void Awake()
         {
+            _helper = GetComponent<UIHelper>();
             _highscoreManager = GetComponent<HighscoreManager>();
             _defaultColor = letters[_selected].color;
 
-            SetButtonListeners();
+            SetupButtons();
             titleText.SetText("hoi");
             SetScore(PlayerPrefs.GetInt("latestPlayerScore"));
             PlayerPrefs.SetInt("latestPlayerScore", 0);
@@ -72,21 +75,15 @@ namespace FinalScreen.Controllers
             }
         }
 
-        private void SetButtonListeners()
+        private void SetupButtons()
         {
-            List<Action> functions = new List<Action>
+            _helper.SetButtonListeners(new List<Action>
             {
                 NextLetter,
                 PrevLetter,
                 NextLetterIndex,
                 Submit
-            };
-
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                var i1 = i;
-                buttons[i].onClick.AddListener(delegate { functions[i1](); });
-            }
+            }, buttons);
         }
 
         private void NextLetter()
