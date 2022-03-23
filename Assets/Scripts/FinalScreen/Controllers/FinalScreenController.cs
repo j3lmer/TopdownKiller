@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +15,8 @@ namespace FinalScreen.Controllers
         [SerializeField] private TMP_Text scoreText;
         [SerializeField] private TMP_Text[] letters;
         [SerializeField] private Button[] buttons;
+
+        private HighscoreManager _highscoreManager;
 
         private int[] letterIndexes = {0, 0, 0};
         private readonly char[] _alphabet = "ABCDEFGHIJKLMNOPQRSTUVWQXYZ0123456789!?".ToCharArray();
@@ -34,14 +38,15 @@ namespace FinalScreen.Controllers
 
         private void Awake()
         {
+            _highscoreManager = GetComponent<HighscoreManager>();
             _defaultColor = letters[_selected].color;
+            
             SetButtonListeners();
             titleText.SetText("hoi");
             SetScore(PlayerPrefs.GetInt("latestPlayerScore"));
             PlayerPrefs.SetInt("latestPlayerScore", 0);
         }
-
-
+        
         private void Update()
         {
             BlinkLetter();
@@ -72,9 +77,10 @@ namespace FinalScreen.Controllers
             {
                 NextLetter,
                 PrevLetter,
-                NextLetterIndex
+                NextLetterIndex,
+                Submit
             };
-
+            
             for (int i = 0; i < buttons.Length; i++)
             {
                 var i1 = i;
@@ -84,6 +90,7 @@ namespace FinalScreen.Controllers
 
         private void NextLetter()
         {
+            Debug.Log("clicked");
             letterIndexes[_selected] = letterIndexes[_selected] >= 38 ? 0 : letterIndexes[_selected] + 1;
             letters[_selected].text = _alphabet[letterIndexes[_selected]].ToString();
         }
@@ -98,6 +105,15 @@ namespace FinalScreen.Controllers
         {
             letters[_selected].color = _defaultColor;
             _selected = _selected + 1 > letters.Length - 1 ? 0 : _selected + 1;
+        }
+
+        private void Submit()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (TMP_Text letter in letters) sb.Append(letter.text);
+            string playerName = sb.ToString();
+            
+            _highscoreManager.AddOrUpdateHighscore(playerName, GetScore());
         }
     }
 }

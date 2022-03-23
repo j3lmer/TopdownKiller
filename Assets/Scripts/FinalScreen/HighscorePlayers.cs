@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
-using FinalScreen.Controllers;
+using UnityEngine;
 
 namespace FinalScreen
 {
+    [Serializable]
     public class HighscorePlayers
     {
-        public List<HighscorePlayerData> HighscorePlayerData = new List<HighscorePlayerData>();
+        [SerializeField] public List<HighscorePlayerData> highscorePlayerData = new List<HighscorePlayerData>();
     }
 }

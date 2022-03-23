@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
+using GameScene.Powerup;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace GameScene.Powerup
+namespace GameScene.Controllers
 {
     public class PowerupController : MonoBehaviour
     {
