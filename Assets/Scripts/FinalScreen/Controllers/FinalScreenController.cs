@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace FinalScreen.Controllers
 {
+    [RequireComponent(typeof(HighscoreManager))]
     public class FinalScreenController : MonoBehaviour
     {
         [SerializeField] private TMP_Text titleText;
