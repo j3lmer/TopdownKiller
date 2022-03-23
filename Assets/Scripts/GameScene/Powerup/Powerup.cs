@@ -58,6 +58,9 @@ namespace GameScene.Powerup
                 case (int) PowerupTypes.OneUp:
                     OneUp();
                     break;
+                case (int) PowerupTypes.QuickShot:
+                    QuickShot();
+                    break;
             }
         }
 
@@ -99,6 +102,18 @@ namespace GameScene.Powerup
         private void OneUp()
         {
             _player.GetComponent<Health>().AddLives(1);
+        }
+
+        private void QuickShot()
+        {
+            double maxSpeed = 1f;
+
+            Player.Player player = _player.GetComponent<Player.Player>();
+
+            double hypoSpeed = player.GetTimeUntilShoot() - 0.005f;
+
+            if (hypoSpeed > maxSpeed) return;
+            player.SetTimeUntilShoot(hypoSpeed);
         }
     }
 }

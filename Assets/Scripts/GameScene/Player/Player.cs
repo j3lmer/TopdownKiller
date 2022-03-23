@@ -11,7 +11,17 @@ namespace GameScene.Player
         private Score _score;
         
         private float _countingTime;
-        private float _timeUntilShoot = 0.2f;
+        private double _timeUntilShoot = 0.2f;
+
+        public double GetTimeUntilShoot()
+        {
+            return _timeUntilShoot;
+        }
+
+        public void SetTimeUntilShoot(double time)
+        {
+            _timeUntilShoot = time;
+        }
 
         private void Awake()
         {

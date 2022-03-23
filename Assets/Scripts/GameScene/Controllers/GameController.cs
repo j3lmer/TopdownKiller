@@ -50,7 +50,7 @@ namespace GameScene.Controllers
         {
             _totalWaves = tw;
         }
-        
+
         public int GetLocalWaves()
         {
             return _localWaves;
@@ -65,7 +65,6 @@ namespace GameScene.Controllers
         {
             return _hasCompleted;
         }
-        
 
         private void SetHasCompleted(bool hasCompleted)
         {
@@ -118,15 +117,16 @@ namespace GameScene.Controllers
         {
             /* TODO: Maak lijst aan Ienumerator functies die verschillende soorten enemies spawnen (net als spawnDefaultEnemies).
              Loop een paar keer, als index deelbaar is door X, spawn dan andere soort enemies, spawn soms random enemies.
+             
             */
             SetTotalWaves(Random.Range(3, 10));
 
             for (int i = 0; i < GetTotalWaves(); i++)
             {
                 bool finished = false;
-                
+
                 SetLocalWaves(Random.Range(1, 6));
-                
+
                 Task task = new Task(StartWaves(_enemySpawnerFunctions["default"], 20));
 
                 task.Finished += delegate(bool manual) { finished = true; };
@@ -136,7 +136,7 @@ namespace GameScene.Controllers
                 int[] currentWave = GetCurrentWave();
                 SetCurrentWave(currentWave[0] + 1, 0);
             }
-            
+
             SetHasCompleted(true);
         }
 
@@ -173,14 +173,12 @@ namespace GameScene.Controllers
             List<Coroutine> coroutines = new List<Coroutine>();
 
             for (int i = 0; i < numberOfCouroutines; i++) coroutines.Add(StartCoroutine(function));
-            
+
             yield return new WaitForSeconds(waveLengthInSeconds);
 
             StopCoroutines(coroutines);
-            
-            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
 
-            yield return null;
+            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
         }
 
         private void StopCoroutines(List<Coroutine> coroutines)

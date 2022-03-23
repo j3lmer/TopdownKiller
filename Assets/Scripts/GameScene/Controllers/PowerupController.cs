@@ -17,7 +17,16 @@ namespace GameScene.Controllers
 
         private IEnumerator SpawnPowerups()
         {
-            Color[] colors = {Color.magenta, Color.blue, Color.green, Color.yellow, Color.cyan, Color.white};
+            Color[] colors =
+            {
+                Color.magenta,
+                Color.blue,
+                Color.green,
+                Color.yellow,
+                Color.cyan,
+                Color.white,
+                new Color(255, 153, 0)
+            };
 
             while (true)
             {
