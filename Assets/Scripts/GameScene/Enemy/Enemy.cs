@@ -7,13 +7,23 @@ namespace GameScene.Enemy
     [RequireComponent(typeof(Death))]
     public class Enemy : MonoBehaviour
     {
+        [SerializeField] private float coolDownTime = 0.5f;
+        
         private Player.Player _player;
         private Shooting _shooter;
         private Health _health;
-
-        [SerializeField] private float coolDownTime = 0.5f;
-
+        private int _enemyType = 0;
         private float _shootTimer;
+
+        public int GetEnemyType()
+        {
+            return _enemyType;
+        }
+
+        public void SetEnemyType(int type)
+        {
+            _enemyType = type;
+        }
 
         private void Awake()
         {
