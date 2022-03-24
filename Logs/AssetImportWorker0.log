@@ -3333,3 +3333,69 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2506,054751 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd32c000b8158d999b6c8175f99fd4df3') in 0,053137 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 50,053940 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95930bcd52760431188181f8c955e134') in 0,015145 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 43,282354 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9764c6f26618525336156512a3e33a9f') in 0,004894 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 33,517565 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f2319fc9256d1bec8dd1e45117a8fb1') in 0,002659 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6,106343 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b74749f0e3a7f2292a0c784e19fab7fa') in 0,003945 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16,737268 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79558635c9b2eafa8ac8abe7f6ce31e1') in 0,004058 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12,849752 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b849d1e8bbe5ba013fb37571bb01fd9e') in 0,003505 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 303,230715 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1089c38c257749280b157cd2526edf5') in 0,006704 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 31,517166 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2afe8da583d1ff46477cad3c3826087b') in 0,002842 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2,353733 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b3e2c88e7a39f1c7c77849b5519e498') in 0,002773 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3,010734 seconds.
+  path: Assets/PostProcessing/GameScene.asset
+  artifactKey: Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PostProcessing/GameScene.asset using Guid(b5e1c75d09084f461b9a725568926948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81cd6c7ebf2f04b66ed4b076015ba838') in 0,003946 seconds 

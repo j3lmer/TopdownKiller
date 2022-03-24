@@ -24,6 +24,7 @@ namespace GameScene
         {
             if (col.CompareTag("Bullet") || col.CompareTag("Powerup")) return;
             if (col.CompareTag("Enemy") && GetShooterTag() == "Enemy") return;
+            if (col.CompareTag("Player") && GetShooterTag() == "Player") return;
 
             Health health = col.GetComponent<Health>();
             if (health) health.SubtractHp(10);
