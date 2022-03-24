@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace GameScene.Player
@@ -12,7 +11,13 @@ namespace GameScene.Player
         
         private float _countingTime;
         private double _timeUntilShoot = 0.2f;
+        public const double MaxTimeUntilShoot = 0.1f;
 
+        public double GetMaxTimeUntilShoot()
+        {
+            return MaxTimeUntilShoot;
+        }
+        
         public double GetTimeUntilShoot()
         {
             return _timeUntilShoot;

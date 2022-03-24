@@ -1,10 +1,7 @@
-using UnityEngine;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using GameScene.Powerup;
+using UnityEngine;
 
-namespace GameScene.Controllers
+namespace GameScene.Powerup
 {
     public class PowerupColors
     {

@@ -109,7 +109,7 @@ namespace GameScene.Powerup
 
             Player.Player player = _player.GetComponent<Player.Player>();
 
-            double hypoSpeed = player.GetTimeUntilShoot() - 0.005f;
+            double hypoSpeed = player.GetTimeUntilShoot() - 0.05f;
 
             if (hypoSpeed > maxSpeed) return;
             player.SetTimeUntilShoot(hypoSpeed);
