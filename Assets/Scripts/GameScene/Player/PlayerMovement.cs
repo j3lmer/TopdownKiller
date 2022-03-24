@@ -6,31 +6,38 @@ namespace GameScene.Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private Camera camera;
-        [SerializeField] private float moveSpeed = 5f;
+        private float _moveSpeed = 5f;
 
         private Rigidbody2D _rb;
 
         private Vector2 _movement;
         private Vector2 _mousePos;
+        public const float Maxmovespeed = 10f;
+
+        public float GetMaxMoveSpeed()
+        {
+            return Maxmovespeed;
+        }
 
         public float GetMoveSpeed()
         {
-            return moveSpeed;
+            return _moveSpeed;
         }
 
         public void SetMoveSpeed(float speed)
         {
-            moveSpeed = speed;
+            _moveSpeed = speed;
         }
 
         public void AddMoveSpeed(float speed)
         {
-            moveSpeed += speed;
+            if (_moveSpeed + speed > Maxmovespeed) return;
+            _moveSpeed += speed;
         }
 
         private void SubtractMoveSpeed(float speed)
         {
-            moveSpeed -= speed;
+            _moveSpeed -= speed;
         }
 
         private void Awake()
@@ -50,7 +57,7 @@ namespace GameScene.Player
 
         void FixedUpdate()
         {
-            _rb.MovePosition(_rb.position + _movement * moveSpeed * Time.fixedDeltaTime);
+            _rb.MovePosition(_rb.position + _movement * _moveSpeed * Time.fixedDeltaTime);
 
             Vector2 lookDir = _mousePos - _rb.position;
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;

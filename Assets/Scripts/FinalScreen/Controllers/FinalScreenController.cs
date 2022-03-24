@@ -112,7 +112,7 @@ namespace FinalScreen.Controllers
             string playerName = sb.ToString();
 
             _highscoreManager.AddOrUpdateHighscore(playerName, GetScore());
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(0); //FIXME: werkt niet/gebeurt niet
         }
     }
 }

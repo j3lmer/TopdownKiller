@@ -11,6 +11,13 @@ namespace GameScene
         [SerializeField] private float bulletForce = 20f;
         private int _fireMode = 0;
 
+        public const int Maxfiremode = 2;
+
+        public int GetMaxFireMode()
+        {
+            return Maxfiremode;
+        }
+
         public int GetFireMode()
         {
             return _fireMode;
@@ -37,8 +44,8 @@ namespace GameScene
                 
                 case (int) FireModes.Triple:
                     FireBullet(color, firePoints[0], firePoints[0].up);
-                    FireBullet(color, firePoints[1], firePoints[1].up - (firePoints[1].right * 0.25f));
-                    FireBullet(color, firePoints[2], firePoints[2].up + (firePoints[2].right * 0.25f));
+                    FireBullet(color, firePoints[1], firePoints[1].up - (firePoints[1].right * 0.1f));
+                    FireBullet(color, firePoints[2], firePoints[2].up + (firePoints[2].right * 0.1f));
                     break;
             }
         }

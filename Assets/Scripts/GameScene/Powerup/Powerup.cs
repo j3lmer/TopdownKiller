@@ -82,7 +82,7 @@ namespace GameScene.Powerup
         private void SpeedboostPlayer()
         {
             PlayerMovement playerMovement = _player.GetComponent<PlayerMovement>();
-            playerMovement.AddMoveSpeed(5);
+            playerMovement.AddMoveSpeed(2);
         }
 
         private void AddPoints()
