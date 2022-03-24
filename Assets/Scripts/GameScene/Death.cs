@@ -25,6 +25,7 @@ namespace GameScene
         public void Die()
         {
             _health.SetAlive(false);
+            
             Destroy(gameObject);
         }
     }

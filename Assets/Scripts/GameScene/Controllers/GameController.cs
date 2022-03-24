@@ -66,7 +66,7 @@ namespace GameScene.Controllers
             return _hasCompleted;
         }
 
-        private void SetHasCompleted(bool hasCompleted)
+        public void SetHasCompleted(bool hasCompleted)
         {
             _hasCompleted = hasCompleted;
             if (_hasCompleted)
@@ -86,14 +86,6 @@ namespace GameScene.Controllers
             SetupSpawnerFunctionsList();
             _tracker.UpdateWaveText(0, 0);
             StartCoroutine(WaveController());
-        }
-
-        private void Update()
-        {
-            if (!_playerHealth.GetAlive())
-            {
-                SetHasCompleted(true);
-            }
         }
 
         private void SetupSpawnerFunctionsList()
@@ -138,6 +130,7 @@ namespace GameScene.Controllers
                 SetCurrentWave(currentWave[0] + 1, 0);
             }
 
+            PlayerPrefs.SetInt("Died", 0);
             SetHasCompleted(true);
         }
 

@@ -1,3 +1,4 @@
+using GameScene.Controllers;
 using GameScene.Trackers;
 using UnityEngine;
 
@@ -19,6 +20,11 @@ namespace GameScene
         public void SetAlive(bool alive)
         {
             _alive = alive;
+            if (_isPlayer && _alive == false)
+            {
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().SetHasCompleted(true);
+                PlayerPrefs.SetInt("Died", 1);
+            }
         }
 
         private void Awake()
