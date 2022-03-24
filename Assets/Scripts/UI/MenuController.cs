@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Highscores.Data;
 using Highscores.Logic;
@@ -70,16 +71,21 @@ namespace UI
 			for(int i = 0; i< sortedHighscores.Count; i++)
 			{
 				if (i >= 8) return;
-				GameObject newTemplate = Instantiate(template, highscoreCanvas.transform);
-				
-				int pos = i + 1;
-				newTemplate.transform.GetChild(0).GetComponent<TMP_Text>().SetText(pos.ToString());
-				newTemplate.transform.GetChild(1).GetComponent<TMP_Text>().SetText(sortedHighscores[i].name);
-				newTemplate.transform.GetChild(2).GetComponent<TMP_Text>().SetText(sortedHighscores[i].score.ToString());
-				
-				newTemplate.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, (-templateHeight * i) - 10f);
-				HonorTop3(i, newTemplate);
+				CreateLeaderboardEntry(template, highscoreCanvas, sortedHighscores, i, templateHeight);
 			}
+		}
+
+		private void CreateLeaderboardEntry(GameObject template, GameObject highscoreCanvas, List<HighscorePlayerData> sortedHighscores, int i, float templateHeight)
+		{
+			GameObject newTemplate = Instantiate(template, highscoreCanvas.transform);
+				
+			int pos = i + 1;
+			newTemplate.transform.GetChild(0).GetComponent<TMP_Text>().SetText(pos.ToString());
+			newTemplate.transform.GetChild(1).GetComponent<TMP_Text>().SetText(sortedHighscores[i].name);
+			newTemplate.transform.GetChild(2).GetComponent<TMP_Text>().SetText(sortedHighscores[i].score.ToString(CultureInfo.InvariantCulture));
+				
+			newTemplate.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, (-templateHeight * i) - 10f);
+			HonorTop3(i, newTemplate);
 		}
 
 		private void HonorTop3(int i, GameObject template)
