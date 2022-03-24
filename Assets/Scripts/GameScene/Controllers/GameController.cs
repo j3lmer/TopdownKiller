@@ -164,7 +164,8 @@ namespace GameScene.Controllers
         // Starts a wave and listens for it to finish, updates the current wave index when its finished
         private void StartTask(int index, IEnumerator waveType, int waveLengthInSeconds)
         {
-            Task spawnDefaultEnemies = new Task(WaveComponent((index + 1) * GetCurrentWave()[0] + 1, waveType, waveLengthInSeconds));
+            int currentTotalWave = GetCurrentWave()[0] + 1;
+            Task spawnDefaultEnemies = new Task(WaveComponent((index + 1) * currentTotalWave, waveType, waveLengthInSeconds * currentTotalWave));
             spawnDefaultEnemies.Finished += delegate(bool manual) { SetCurrentWave(GetCurrentWave()[0], index + 1); };
         }
 
