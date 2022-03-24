@@ -76,7 +76,13 @@ namespace UI
 			}
 		}
 
-		private void CreateLeaderboardEntry(GameObject template, GameObject highscoreCanvas, List<HighscorePlayerData> sortedHighscores, int i, float templateHeight)
+		private void CreateLeaderboardEntry(
+				GameObject template, 
+				GameObject highscoreCanvas, 
+				List<HighscorePlayerData> sortedHighscores, 
+				int i, 
+				float templateHeight
+			)
 		{
 			GameObject newTemplate = Instantiate(template, highscoreCanvas.transform);
 				
