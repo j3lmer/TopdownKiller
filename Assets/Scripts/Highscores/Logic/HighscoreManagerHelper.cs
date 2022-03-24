@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.IO;
+using Highscores.Data;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace FinalScreen.Controllers
+namespace Highscores.Logic
 {
     public class HighscoreManagerHelper : MonoBehaviour
     {

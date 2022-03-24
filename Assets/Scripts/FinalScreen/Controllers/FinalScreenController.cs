@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Highscores.Logic;
 using TMPro;
 using UI;
 using UnityEngine;

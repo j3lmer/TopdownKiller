@@ -1,7 +1,6 @@
 using System;
-using UnityEngine;
 
-namespace FinalScreen
+namespace Highscores.Data
 {
     [Serializable]
     public class HighscorePlayerData
