@@ -18,7 +18,7 @@ namespace GameScene
 
         public void SetFireMode(int fireMode)
         {
-            if (fireMode > Enum.GetNames(typeof(FireModes)).Length) return;
+            if (fireMode > Enum.GetNames(typeof(FireModes)).Length -1) return;
             _fireMode = fireMode;
         }
         // Update is called once per frame
