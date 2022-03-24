@@ -61,18 +61,19 @@ namespace UI
 			
 			_uiHelper.Hospital(_menuTransform, false);
 			_uiHelper.Hospital(_highscores, true);
-			
+
+			HighscoreManager manager = GetComponent<HighscoreManager>();
 			GameObject highscoreCanvas = GameObject.Find("HighscoreCanvas");
 			GameObject template = GameObject.Find("LeaderBoardEntryTemplate");
-			HighscoreManager manager = GetComponent<HighscoreManager>();
-			
+
 			List<HighscorePlayerData> sortedHighscores = manager.GetHighscores().OrderByDescending(o => o.score).ToList();
 			for(int i = 0; i< sortedHighscores.Count; i++)
 			{
 				if (i >= 8) return;
 				GameObject newTemplate = Instantiate(template, highscoreCanvas.transform);
 				
-				newTemplate.transform.GetChild(0).GetComponent<TMP_Text>().SetText(i+1.ToString());
+				int pos = i + 1;
+				newTemplate.transform.GetChild(0).GetComponent<TMP_Text>().SetText(pos.ToString());
 				newTemplate.transform.GetChild(1).GetComponent<TMP_Text>().SetText(sortedHighscores[i].name);
 				newTemplate.transform.GetChild(2).GetComponent<TMP_Text>().SetText(sortedHighscores[i].score.ToString());
 				
