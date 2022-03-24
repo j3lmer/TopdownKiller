@@ -14,17 +14,18 @@ namespace GameScene
 
         private void Update()
         {
+            //TODO: improve this
             int hp = _health.GetHp();
             if (hp <= 0)
             {
                 _health.SubtractLives(1);
             }
+        }
 
-            if (_health.GetLives() <= 0)
-            {
-                _health.SetAlive(false);
-                Destroy(gameObject);
-            }
+        public void Die()
+        {
+            _health.SetAlive(false);
+            Destroy(gameObject);
         }
     }
 }

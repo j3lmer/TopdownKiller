@@ -27,7 +27,11 @@ namespace GameScene
             if (col.CompareTag("Player") && GetShooterTag() == "Player") return;
 
             Health health = col.GetComponent<Health>();
-            if (health) health.SubtractHp(10);
+            if (health)
+            {
+                health.SubtractHp(10);
+            }
+            
 
             Destroy(gameObject);
         }

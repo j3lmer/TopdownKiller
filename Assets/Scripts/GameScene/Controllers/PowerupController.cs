@@ -12,7 +12,7 @@ namespace GameScene.Controllers
     {
         [SerializeField] private GameObject powerupPrefab;
 
-        private void Awake()
+        private void Start()
         {
             StartCoroutine(SpawnPowerups());
         }
