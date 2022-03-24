@@ -25,7 +25,8 @@ namespace GameScene.Controllers
                 Color.yellow,
                 Color.cyan,
                 Color.white,
-                new Color(255, 153, 0)
+                new Color(94, 136, 220),
+                new Color(152, 42, 152),
             };
 
             while (true)

@@ -9,7 +9,6 @@ namespace GameScene.Powerup
         StopEnemies = 4,
         OneUp = 5,
         QuickShot = 6,
-        //double shot
-        //triple shot
+        IncreaseBullets = 7,
     }
 }

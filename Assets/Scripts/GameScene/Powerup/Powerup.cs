@@ -39,19 +39,15 @@ namespace GameScene.Powerup
                 case (int) PowerupTypes.RemoveEnemies:
                     DestroyEnemies();
                     break;
-
                 case (int) PowerupTypes.SpeedboostPlayer:
                     SpeedboostPlayer();
                     break;
-
                 case (int) PowerupTypes.HealthBoost:
                     HealthBoost();
                     break;
-
                 case (int) PowerupTypes.Points:
                     AddPoints();
                     break;
-
                 case (int) PowerupTypes.StopEnemies:
                     StopEnemies();
                     break;
@@ -60,6 +56,9 @@ namespace GameScene.Powerup
                     break;
                 case (int) PowerupTypes.QuickShot:
                     QuickShot();
+                    break;
+                case (int) PowerupTypes.IncreaseBullets:
+                    IncreaseBullets();
                     break;
             }
         }
@@ -114,6 +113,12 @@ namespace GameScene.Powerup
 
             if (hypoSpeed > maxSpeed) return;
             player.SetTimeUntilShoot(hypoSpeed);
+        }
+
+        private void IncreaseBullets()
+        {
+            Shooting shooter = _player.GetComponent<Shooting>();
+            shooter.SetFireMode(shooter.GetFireMode() + 1);
         }
     }
 }
