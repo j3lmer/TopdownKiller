@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using GameScene.Powerup;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,21 +18,10 @@ namespace GameScene.Controllers
 
         private IEnumerator SpawnPowerups()
         {
-            Color[] colors =
-            {
-                Color.magenta,
-                Color.blue,
-                Color.green,
-                Color.yellow,
-                Color.cyan,
-                Color.white,
-                new Color(94, 136, 220),
-                new Color(152, 42, 152),
-            };
+            Dictionary<int, Color> colors = PowerupColors.Colors;
 
             while (true)
             {
-                //PowerupTypes
                 int powerupType = Random.Range(0, Enum.GetNames(typeof(PowerupTypes)).Length);
                 Vector2 spawnLocation = new Vector2(Random.Range(-25, 25), Random.Range(10, -10));
 
