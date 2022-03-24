@@ -118,8 +118,8 @@ namespace GameScene.Controllers
         {
             /* TODO: Maak lijst aan Ienumerator functies die verschillende soorten enemies spawnen (net als spawnDefaultEnemies).
              Loop een paar keer, als index deelbaar is door X, spawn dan andere soort enemies, spawn soms random enemies.
-             
             */
+            
             SetTotalWaves(Random.Range(3, 10));
 
             for (int i = 0; i < GetTotalWaves(); i++)
@@ -164,7 +164,7 @@ namespace GameScene.Controllers
         // Starts a wave and listens for it to finish, updates the current wave index when its finished
         private void StartTask(int index, IEnumerator waveType, int waveLengthInSeconds)
         {
-            Task spawnDefaultEnemies = new Task(WaveComponent(index + 1, waveType, waveLengthInSeconds));
+            Task spawnDefaultEnemies = new Task(WaveComponent((index + 1) * GetCurrentWave()[0] + 1, waveType, waveLengthInSeconds));
             spawnDefaultEnemies.Finished += delegate(bool manual) { SetCurrentWave(GetCurrentWave()[0], index + 1); };
         }
 
