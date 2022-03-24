@@ -24,7 +24,6 @@ namespace GameScene
         // Update is called once per frame
         public void Shoot(Color color)
         {
-            Debug.Log(GetFireMode() + gameObject.name);
             switch (_fireMode)
             {
                 case (int) FireModes.Default:
