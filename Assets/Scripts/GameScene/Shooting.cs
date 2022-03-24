@@ -1,4 +1,5 @@
 using System;
+using GameScene.Powerup;
 using UnityEngine;
 
 namespace GameScene
@@ -17,12 +18,13 @@ namespace GameScene
 
         public void SetFireMode(int fireMode)
         {
-            if (fireMode > Enum.GetNames(typeof(FireModes)).Length -1) return;
+            if (fireMode > Enum.GetNames(typeof(FireModes)).Length) return;
             _fireMode = fireMode;
         }
         // Update is called once per frame
         public void Shoot(Color color)
         {
+            Debug.Log(GetFireMode() + gameObject.name);
             switch (_fireMode)
             {
                 case (int) FireModes.Default:
@@ -36,8 +38,8 @@ namespace GameScene
                 
                 case (int) FireModes.Triple:
                     FireBullet(color, firePoints[0], firePoints[0].up);
-                    FireBullet(color, firePoints[1], new Vector3(firePoints[1].position.x + 0.5f, firePoints[1].position.y + 0.5f, firePoints[1].position.z));
-                    FireBullet(color, firePoints[1], new Vector3(firePoints[2].position.x - 0.5f, firePoints[2].position.y + 0.5f, firePoints[1].position.z));
+                    FireBullet(color, firePoints[1], firePoints[1].up - (firePoints[1].right * 0.25f));
+                    FireBullet(color, firePoints[2], firePoints[2].up + (firePoints[2].right * 0.25f));
                     break;
             }
         }

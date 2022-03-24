@@ -1,9 +1,9 @@
-namespace GameScene
+namespace GameScene.Powerup
 {
     public enum FireModes
     {
         Default = 0,
         Twin = 1,
-        Triple = 3
+        Triple = 2
     }
 }
