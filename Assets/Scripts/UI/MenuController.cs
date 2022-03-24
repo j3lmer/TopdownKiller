@@ -39,7 +39,8 @@ namespace UI
 					StartGame,
 					ShowExplanation,
 					ShowHighscores,
-					Quit
+					Quit,
+					Back
 				}, buttons
 			);
 		}
@@ -51,8 +52,8 @@ namespace UI
 
 		private void ShowExplanation()
 		{
-			Transform menuTransform = _canvas.transform.Find("MainMenu");
-			_uiHelper.Hospital(menuTransform, false);
+			_menuTransform = _canvas.transform.Find("MainMenu");
+			_uiHelper.Hospital(_menuTransform, false);
 			//re-enable andere pre-made components
 		}
 
@@ -111,6 +112,12 @@ namespace UI
 			{
 				tmpText.color = color;
 			}
+		}
+
+		private void Back()
+		{ 
+			_uiHelper.Hospital(_menuTransform, true);
+			_uiHelper.Hospital(_highscores, false);
 		}
 		
 		private void Quit()
