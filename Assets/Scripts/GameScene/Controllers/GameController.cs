@@ -77,6 +77,7 @@ namespace GameScene.Controllers
 
         private void Awake()
         {
+            Application.targetFrameRate = 144;
             _enemyController = GetComponent<EnemyController>();
             _tracker = GetComponent<WaveTracker>();
             _player = MakePlayer();

@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameScene.Powerup;
 
 namespace GameScene.Controllers
 {
@@ -9,14 +10,14 @@ namespace GameScene.Controllers
     {
         public static readonly Dictionary<int, Color> Colors = new Dictionary<int, Color>
         {
-            {0, Color.magenta},
-            {1, Color.blue},
-            {2, Color.green},
-            {3,  Color.green},
-            {4, Color.cyan},
-            {5,  Color.white},
-            {6, new Color32(94, 136, 220, 255)},
-            {7, new Color32(152, 42, 152, 255)},
+            {(int) PowerupTypes.RemoveEnemies, Color.magenta},
+            {(int) PowerupTypes.SpeedboostPlayer, Color.blue},
+            {(int) PowerupTypes.HealthBoost, Color.green},
+            {(int) PowerupTypes.Points,  Color.yellow},
+            {(int) PowerupTypes.StopEnemies, Color.cyan},
+            {(int) PowerupTypes.OneUp,  Color.white},
+            {(int) PowerupTypes.QuickShot, new Color32(94, 136, 220, 255)},
+            {(int) PowerupTypes.IncreaseBullets, new Color32(152, 42, 152, 255)},
         };
     }
 }
