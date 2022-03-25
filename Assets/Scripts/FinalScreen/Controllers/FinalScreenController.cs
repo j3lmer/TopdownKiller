@@ -47,7 +47,7 @@ namespace FinalScreen.Controllers
             _defaultColor = letters[_selected].color;
 
             SetupButtons();
-            SetTitleText();
+            titleText.SetText("You died");
 
             SetScore(PlayerPrefs.GetInt("latestPlayerScore"));
             PlayerPrefs.SetInt("latestPlayerScore", 0);
@@ -57,21 +57,7 @@ namespace FinalScreen.Controllers
         {
             BlinkLetter();
         }
-
-        private void SetTitleText()
-        {
-            switch (PlayerPrefs.GetInt("Died"))
-            {
-                case 0:
-                    titleText.SetText("You Survived!");
-                    break;
-                
-                case 1:
-                    titleText.SetText("You Died");
-                    break;    
-            }
-            PlayerPrefs.SetInt("Died", 1);
-        }
+        
 
         private void BlinkLetter()
         {

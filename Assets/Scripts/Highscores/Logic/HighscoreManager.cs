@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using FinalScreen.Controllers;
 using Highscores.Data;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -17,12 +16,11 @@ namespace Highscores.Logic
         {
             _helper = GetComponent<HighscoreManagerHelper>();
             _hsPlayers = new HighscorePlayers();
+            _hsPlayers.highscorePlayerData = GetHighscores();
         }
 
         public void AddOrUpdateHighscore(string playerName, int score)
         {
-            _hsPlayers.highscorePlayerData = _helper.ConvertRawTextToPlayers(_helper.GetStorageFileRaw());
-
             _localScore = score;
             _localPlayerName = playerName;
             _helper.SaveToFile(UpdateList());
@@ -33,7 +31,7 @@ namespace Highscores.Logic
 
         private string UpdateList()
         {
-            if (_hsPlayers == null) return CreateAndConvertNewPlayer();
+            if (_hsPlayers == null || _hsPlayers.highscorePlayerData == null || _hsPlayers.highscorePlayerData.Count <= 0) return CreateAndConvertNewPlayer();
             
             int index = _hsPlayers.highscorePlayerData.FindIndex(p => p.name == _localPlayerName);
             if (index == -1) return CreateAndConvertNewPlayer();

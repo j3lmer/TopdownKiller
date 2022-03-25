@@ -10,10 +10,9 @@ namespace GameScene.Trackers
         [SerializeField]
         private TMP_Text _waveText;
 
-        public void UpdateWaveText(int waveNumber, int localWaveNumber)
+        public void UpdateWaveText(int bigWave, int smallWave)
         {
-            if (waveNumber > GetComponent<GameController>().GetTotalWaves()) return;
-            _waveText.SetText($"Wave {waveNumber +1} : {localWaveNumber + 1}");
+            _waveText.SetText($"Wave {bigWave +1} : {smallWave + 1}");
         }
     }
 }
