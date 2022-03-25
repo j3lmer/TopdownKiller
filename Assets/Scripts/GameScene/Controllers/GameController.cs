@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using GameScene.Trackers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,56 +6,45 @@ using UnityEngine.SceneManagement;
 namespace GameScene.Controllers
 {
     [
-        RequireComponent(typeof(EnemyController)),
         RequireComponent(typeof(PowerupController)),
-        RequireComponent(typeof(WaveTracker))
+        RequireComponent(typeof(WaveTracker)),
+        RequireComponent(typeof(GameControllerHelper))
     ]
     public class GameController : MonoBehaviour
     {
-        //TODO: differentieer tussen totale waves en waves binnen waves.
-
         [SerializeField] private GameObject playerPrefab;
 
         private GameObject _player;
-        private EnemyController _enemyController;
         private WaveTracker _tracker;
+        private PowerupController _powerupController;
+        private GameControllerHelper _gameControllerHelper;
 
-        private int _currentWave;
-        private int _currentWaveLocal;
-        private int _totalWaves = 3;
-        private int _localWaves = 3;
-        private bool _hasCompleted = false;
+        private int _currentWaveBig;
+        private int _currentWaveSmall;
+        private bool _hasCompleted;
 
-        public int[] GetCurrentWave()
+        private Task _powerupSpawner;
+
+        public int GetCurrentWaveBig()
         {
-            return new int[] {_currentWave, _currentWaveLocal};
+            return _currentWaveBig;
         }
 
-        public void SetCurrentWave(int cw, int cwl)
+        public void SetCurrentWaveBig(int cwb)
         {
-            _currentWave = cw;
-            _currentWaveLocal = cwl;
-            _tracker.UpdateWaveText(cw, cwl);
+            _currentWaveBig = cwb;
+            _tracker.UpdateWaveText(cwb, GetCurrentWaveSmall());
         }
 
-        public int GetTotalWaves()
+        public int GetCurrentWaveSmall()
         {
-            return _totalWaves;
+            return _currentWaveSmall;
         }
 
-        public void SetTotalWaves(int tw)
+        public void SetCurrentWaveSmall(int cws)
         {
-            _totalWaves = tw;
-        }
-
-        public int GetLocalWaves()
-        {
-            return _localWaves;
-        }
-
-        public void SetLocalWaves(int tw)
-        {
-            _localWaves = tw;
+            _currentWaveSmall = cws;
+            _tracker.UpdateWaveText(GetCurrentWaveBig(), cws);
         }
 
         private bool GetHasCompleted()
@@ -76,14 +64,16 @@ namespace GameScene.Controllers
         private void Awake()
         {
             Application.targetFrameRate = 144;
-            _enemyController = GetComponent<EnemyController>();
+            _gameControllerHelper = GetComponent<GameControllerHelper>();
             _tracker = GetComponent<WaveTracker>();
+            _powerupController = GetComponent<PowerupController>();
             _player = MakePlayer();
 
             _tracker.UpdateWaveText(0, 0);
-            StartCoroutine(WaveController());
+            StartCoroutine(AwakeWaveMaster());
+            _powerupSpawner = new Task(_powerupController.SpawnPowerups());
         }
-        
+
         private GameObject MakePlayer()
         {
             return Instantiate
@@ -96,80 +86,50 @@ namespace GameScene.Controllers
                 .gameObject;
         }
 
-        // Master controller which states how many waves shall be started, what kind of enemies they will spawn and how long each wave will last
-        private IEnumerator WaveController()
+        private IEnumerator AwakeWaveMaster()
         {
-            /* TODO: Maak lijst aan Ienumerator functies die verschillende soorten enemies spawnen (net als spawnDefaultEnemies).
-             Loop een paar keer, als index deelbaar is door X, spawn dan andere soort enemies, spawn soms random enemies.
-            */
-            
-            SetTotalWaves(Random.Range(3, 10));
+            Health player = _player.GetComponent<Health>();
+            int index = 0;
 
-            for (int i = 0; i < GetTotalWaves(); i++)
+            yield return new WaitForSecondsRealtime(3);
+            while (player.GetAlive())
             {
-                bool finished = false;
-                Task task;
-                SetLocalWaves(Random.Range(1, 6));
-                if ((GetCurrentWave()[1] + 1) % 3 == 0)
-                {
-                    task = new Task(StartWaves(_enemyController.SpawnDefaultBoss(i +1)));
-                }
-                else task = new Task(StartWaves(_enemyController.SpawnEnemies()));
-                
-                task.Finished += delegate(bool manual) { finished = true; };
-                yield return new WaitUntil(() => finished);
-
-                int[] currentWave = GetCurrentWave();
-                SetCurrentWave(currentWave[0] + 1, 0);
-            }
-
-            PlayerPrefs.SetInt("Died", 0);
-            SetHasCompleted(true);
-        }
-
-        // Sets total amount of waves, starts them, gives some extra time between waves
-        private IEnumerator StartWaves(IEnumerator waveType)
-        {
-            for (int i = 0; i < GetLocalWaves(); i++)
-            {
-                yield return new WaitForSeconds(1);
-                // Debug.Log("wavetask started");
-
-                StartTask(i, waveType);
-
-                var i1 = i;
-                yield return new WaitUntil(() => GetCurrentWave()[1] == i1 + 1);
-
-                // Debug.Log("wavetask finished");
-
+                index++;
+                bool bigWaveFinished = false;
+                Task bigwave = new Task(BigWave(index));
+                bigwave.Finished += delegate(bool manual) { bigWaveFinished = true; };
+                yield return new WaitUntil(() => bigWaveFinished);
                 yield return new WaitForSeconds(5);
             }
         }
 
-
-        // Starts a wave and listens for it to finish, updates the current wave index when its finished
-        private void StartTask(int index, IEnumerator waveType)
+        private IEnumerator BigWave(int index)
         {
-            int currentTotalWave = GetCurrentWave()[0] + 1;
-            Task spawnDefaultEnemies = new Task(WaveComponent((index + 1) * currentTotalWave, waveType));
-            spawnDefaultEnemies.Finished += delegate(bool manual) { SetCurrentWave(GetCurrentWave()[0], index + 1); };
+            bool smallWaveFinished = false;
+            Task smallWaveRound = new Task(SmallWaveRound(5, index));
+            smallWaveRound.Finished += delegate(bool manual) { smallWaveFinished = true; };
+
+            yield return new WaitUntil(() => smallWaveFinished);
+
+            SetCurrentWaveSmall(0);
+            SetCurrentWaveBig(GetCurrentWaveBig() + 1);
         }
 
-        // Component for starting given coroutines
-        private IEnumerator WaveComponent(int numberOfCouroutines, IEnumerator function)
+        private IEnumerator SmallWaveRound(int numberOfSmallWaves, int index)
         {
-            List<Coroutine> coroutines = new List<Coroutine>();
+            for (var i = 0; i < numberOfSmallWaves - 1; i++)
+            {
+                _gameControllerHelper.SmallWave(index, i);
+                yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
+                yield return new WaitForSeconds(5);
+                SetCurrentWaveSmall(GetCurrentWaveSmall() + 1);
+            }
 
-            for (int i = 0; i < numberOfCouroutines; i++) coroutines.Add(StartCoroutine(function));
-
-            StopCoroutines(coroutines);
-
+            _powerupSpawner.Stop();
+            _gameControllerHelper.StartBossWave(GetCurrentWaveBig() + 1);
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
-        }
-
-        private void StopCoroutines(List<Coroutine> coroutines)
-        {
-            coroutines.ForEach(delegate(Coroutine coroutine) { StopCoroutine(coroutine); });
+            _powerupSpawner.Start();
+            yield return new WaitForSeconds(8);
         }
     }
 }

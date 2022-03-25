@@ -12,12 +12,7 @@ namespace GameScene.Controllers
     {
         [SerializeField] private GameObject powerupPrefab;
 
-        private void Start()
-        {
-            StartCoroutine(SpawnPowerups());
-        }
-
-        private IEnumerator SpawnPowerups()
+        public IEnumerator SpawnPowerups()
         {
             Dictionary<int, Color> colors = PowerupColors.Colors;
 

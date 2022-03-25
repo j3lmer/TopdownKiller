@@ -7,7 +7,7 @@ namespace GameScene
         [SerializeField] private GameObject hitEffect;
 
         private float _despawnTime = 2f;
-        private float _aliveTime = 0f;
+        private float _aliveTime;
         private GameObject _shooter;
 
         public void SetShooter(GameObject shooter)
@@ -26,16 +26,18 @@ namespace GameScene
             if (col.CompareTag("Bullet") || col.CompareTag("Powerup")) return;
             if (col.CompareTag("Enemy") && GetShooter().CompareTag("Enemy")) return;
             if (col.CompareTag("Player") && GetShooter().CompareTag("Player")) return;
-            
-            GameObject shooter = GetShooter();
-            if (shooter && shooter.GetComponent<Enemy.Enemy>() && shooter.GetComponent<Enemy.Enemy>().GetEnemyType() == 1) damage = 50;
 
-            Health health = col.GetComponent<Health>();
-            if (health)
+            if (GetShooter())
             {
-                health.SubtractHp(damage);
+                GameObject shooter = GetShooter();
+                if 
+                (
+                    shooter.GetComponent<Enemy.Enemy>() &&
+                    shooter.GetComponent<Enemy.Enemy>().GetEnemyType() == 1
+                ) damage = 50;
             }
             
+            if (col.TryGetComponent(out Health health)) health.SubtractHp(damage);
             Destroy(gameObject);
         }
 
