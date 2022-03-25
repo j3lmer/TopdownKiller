@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Highscores.Data;
@@ -13,15 +14,14 @@ namespace Highscores.Logic
 
         private void Awake()
         {
-            _storagePath = $"{Application.dataPath}/json";
-            _highscoreStorageFile = $"{Application.dataPath}/json/Highscores.json";
+            _storagePath = Application.persistentDataPath + "/json";
+            _highscoreStorageFile = Application.persistentDataPath + "/json/Highscores.json";
         }
 
         public string GetStorageFileRaw()
         {
-            if (!Directory.Exists(_storagePath))
-                Directory.CreateDirectory(_storagePath);
-
+            if (!Directory.Exists(_storagePath)) Directory.CreateDirectory(_storagePath);
+            
             if (!File.Exists(_highscoreStorageFile))
             {
                 var fs = new FileStream(_highscoreStorageFile, FileMode.Create);

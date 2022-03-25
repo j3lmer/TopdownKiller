@@ -24,9 +24,12 @@ namespace GameScene
         {
             int damage = 10;
             if (col.CompareTag("Bullet") || col.CompareTag("Powerup")) return;
-            if (col.CompareTag("Enemy") && GetShooter().CompareTag("Enemy")) return;
-            if (col.CompareTag("Player") && GetShooter().CompareTag("Player")) return;
-
+            if (GetShooter())
+            {
+                if (col.CompareTag("Enemy") && GetShooter().CompareTag("Enemy")) return;
+                if (col.CompareTag("Player") && GetShooter().CompareTag("Player")) return;
+            }
+            
             if (GetShooter())
             {
                 GameObject shooter = GetShooter();
