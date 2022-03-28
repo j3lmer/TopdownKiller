@@ -19,16 +19,19 @@ namespace UI
 		private UIHelper _uiHelper;
 		private GameObject _canvas;
 		
-		Transform _menuTransform;
+		private Transform _menuTransform;
 		private Transform _highscores;
+		private Transform _explanation;
 
 		private void Awake()
 		{
 			_canvas = GameObject.Find("Canvas");
 			_menuTransform = _canvas.transform.Find("MainMenu");
 			_highscores = _canvas.transform.Find("Highscores");
+			_explanation = _canvas.transform.Find("Explanation");
 			_uiHelper = GetComponent<UIHelper>();
 			_uiHelper.Hospital(_highscores, false);
+			_uiHelper.Hospital(_explanation, false);
 			SetupButtons();
 		}
 
@@ -40,6 +43,7 @@ namespace UI
 					ShowExplanation,
 					ShowHighscores,
 					Quit,
+					Back,
 					Back
 				}, buttons
 			);
@@ -54,7 +58,7 @@ namespace UI
 		{
 			_menuTransform = _canvas.transform.Find("MainMenu");
 			_uiHelper.Hospital(_menuTransform, false);
-			//re-enable andere pre-made components
+			_uiHelper.Hospital(_explanation, true);
 		}
 
 		private void ShowHighscores()
@@ -124,6 +128,7 @@ namespace UI
 		{ 
 			_uiHelper.Hospital(_menuTransform, true);
 			_uiHelper.Hospital(_highscores, false);
+			_uiHelper.Hospital(_explanation, false);
 		}
 		
 		private void Quit()
