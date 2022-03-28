@@ -48,6 +48,7 @@ namespace Highscores.Logic
         private string CreateAndConvertNewPlayer()
         {
             if (_hsPlayers == null) _hsPlayers = new HighscorePlayers();
+            if (_hsPlayers.highscorePlayerData == null) _hsPlayers.highscorePlayerData = new List<HighscorePlayerData>();
             HighscorePlayerData newPlayerData = CreateNewPlayerData();
             _hsPlayers.highscorePlayerData.Add(newPlayerData);
             return ConvertToString(_hsPlayers.highscorePlayerData);

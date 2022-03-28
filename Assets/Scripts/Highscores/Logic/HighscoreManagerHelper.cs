@@ -9,26 +9,18 @@ namespace Highscores.Logic
 {
     public class HighscoreManagerHelper : MonoBehaviour
     {
-        private string _storagePath;
-        private string _highscoreStorageFile;
-
-        private void Awake()
-        {
-            _storagePath = Application.persistentDataPath + "/json";
-            _highscoreStorageFile = Application.persistentDataPath + "/json/Highscores.json";
-        }
-
         public string GetStorageFileRaw()
         {
-            if (!Directory.Exists(_storagePath)) Directory.CreateDirectory(_storagePath);
+            Debug.Log(Application.persistentDataPath + "/json/Highscores.json");
+            if (!Directory.Exists(Application.persistentDataPath + "/json")) Directory.CreateDirectory(Application.persistentDataPath + "/json");
             
-            if (!File.Exists(_highscoreStorageFile))
+            if (!File.Exists(Application.persistentDataPath + "/json/Highscores.json"))
             {
-                var fs = new FileStream(_highscoreStorageFile, FileMode.Create);
+                var fs = new FileStream(Application.persistentDataPath + "/json/Highscores.json", FileMode.Create);
                 fs.Dispose();
             }
 
-            return File.ReadAllText(_highscoreStorageFile);
+            return File.ReadAllText(Application.persistentDataPath + "/json/Highscores.json");
         }
 
         public List<HighscorePlayerData> ConvertRawTextToPlayers(string rawData)
@@ -38,7 +30,7 @@ namespace Highscores.Logic
 
         public void SaveToFile(string json)
         {
-            File.WriteAllText(_highscoreStorageFile, json);
+            File.WriteAllText(Application.persistentDataPath + "/json/Highscores.json", json);
         }
     }
 }
