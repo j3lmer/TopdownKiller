@@ -27,7 +27,7 @@ namespace GameScene
 
         public void SetFireMode(int fireMode)
         {
-            if (fireMode > Enum.GetNames(typeof(FireModes)).Length -1) return;
+            if (fireMode > Enum.GetNames(typeof(FireModes)).Length - 1) return;
             _fireMode = fireMode;
         }
 
@@ -44,12 +44,12 @@ namespace GameScene
                 case (int) FireModes.Default:
                     FireBullet(color, firePoints[0], firePoints[0].up);
                     break;
-                
+
                 case (int) FireModes.Twin:
                     FireBullet(color, firePoints[1], firePoints[1].up);
                     FireBullet(color, firePoints[2], firePoints[2].up);
                     break;
-                
+
                 case (int) FireModes.Triple:
                     FireBullet(color, firePoints[0], firePoints[0].up);
                     FireBullet(color, firePoints[1], firePoints[1].up - (firePoints[1].right * 0.1f));
@@ -57,7 +57,7 @@ namespace GameScene
                     break;
             }
         }
-        
+
         private void FireBullet(Color color, Transform firePoint, Vector3 direction)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

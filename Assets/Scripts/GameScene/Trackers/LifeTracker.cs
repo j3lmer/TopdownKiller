@@ -5,11 +5,9 @@ namespace GameScene.Trackers
 {
     public class LifeTracker : MonoBehaviour
     {
-        [SerializeField]
-        public TMP_Text lifeText;
+        [SerializeField] public TMP_Text lifeText;
 
-        [SerializeField] 
-        public TMP_Text healthText;
+        [SerializeField] public TMP_Text healthText;
 
         public void UpdateLives(int lives)
         {

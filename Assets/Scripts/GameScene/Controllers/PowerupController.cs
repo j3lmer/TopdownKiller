@@ -24,7 +24,7 @@ namespace GameScene.Controllers
 
                 GameObject powerupGameObject = Instantiate(powerupPrefab, spawnLocation, Quaternion.identity);
                 GameScene.Powerup.Powerup powerup = powerupGameObject.GetComponent<GameScene.Powerup.Powerup>();
-                
+
                 powerup.SetPowerupType(powerupType);
                 powerup.SetColor(colors[powerupType]);
 
@@ -37,18 +37,21 @@ namespace GameScene.Controllers
             switch (powerupTypeLocal)
             {
                 case (int) PowerupTypes.SpeedboostPlayer:
-                    PlayerMovement playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-                    if (playerMovement.GetMoveSpeed() >= playerMovement.GetMaxMoveSpeed())  powerupTypeLocal = (int) PowerupTypes.Points;
+                    PlayerMovement playerMovement =
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+                    if (playerMovement.GetMoveSpeed() >= playerMovement.GetMaxMoveSpeed())
+                        powerupTypeLocal = (int) PowerupTypes.Points;
                     break;
-                
+
                 case (int) PowerupTypes.IncreaseBullets:
                     Shooting shooter = GameObject.FindGameObjectWithTag("Player").GetComponent<Shooting>();
                     if (shooter.GetFireMode() >= shooter.GetMaxFireMode()) powerupTypeLocal = (int) PowerupTypes.Points;
                     break;
-                
+
                 case (int) PowerupTypes.QuickShot:
                     Player.Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player.Player>();
-                    if(player.GetMaxTimeUntilShoot() >= player.GetTimeUntilShoot()) powerupTypeLocal = (int) PowerupTypes.Points;
+                    if (player.GetMaxTimeUntilShoot() >= player.GetTimeUntilShoot())
+                        powerupTypeLocal = (int) PowerupTypes.Points;
                     break;
             }
 

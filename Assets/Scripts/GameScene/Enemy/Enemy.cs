@@ -8,7 +8,7 @@ namespace GameScene.Enemy
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private float coolDownTime = 0.5f;
-        
+
         private Player.Player _player;
         private Shooting _shooter;
         private Health _health;

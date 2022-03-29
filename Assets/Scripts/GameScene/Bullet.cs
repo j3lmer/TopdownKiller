@@ -29,17 +29,17 @@ namespace GameScene
                 if (col.CompareTag("Enemy") && GetShooter().CompareTag("Enemy")) return;
                 if (col.CompareTag("Player") && GetShooter().CompareTag("Player")) return;
             }
-            
+
             if (GetShooter())
             {
                 GameObject shooter = GetShooter();
-                if 
+                if
                 (
                     shooter.GetComponent<Enemy.Enemy>() &&
                     shooter.GetComponent<Enemy.Enemy>().GetEnemyType() == 1
                 ) damage = 50;
             }
-            
+
             if (col.TryGetComponent(out Health health)) health.SubtractHp(damage);
             Destroy(gameObject);
         }

@@ -15,14 +15,14 @@ namespace GameScene.Controllers
 
         public void SmallWave(int index, int i)
         {
-            EnemySpawner((index +1) + (i +1), () => _enemyController.SpawnEnemy());
+            EnemySpawner((index + 1) + (i + 1), () => _enemyController.SpawnEnemy());
         }
 
         public void StartBossWave(int bossNumber)
         {
             EnemySpawner(bossNumber, () => _enemyController.SpawnDefaultBoss(bossNumber));
         }
-        
+
         private void EnemySpawner(int numberOfEnemies, Action function)
         {
             for (int i = 0; i < numberOfEnemies; i++) function();

@@ -60,7 +60,7 @@ namespace FinalScreen.Controllers
         {
             BlinkLetter();
         }
-        
+
 
         private void BlinkLetter()
         {

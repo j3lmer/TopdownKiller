@@ -27,7 +27,7 @@ namespace GameScene
         {
             FindObjectOfType<AudioManager>().Play("die");
             _health.SetAlive(false);
-            
+
             Destroy(gameObject);
         }
     }

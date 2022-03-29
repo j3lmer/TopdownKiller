@@ -11,8 +11,9 @@ namespace Highscores.Logic
     {
         public string GetStorageFileRaw()
         {
-            if (!Directory.Exists(Application.persistentDataPath + "/json")) Directory.CreateDirectory(Application.persistentDataPath + "/json");
-            
+            if (!Directory.Exists(Application.persistentDataPath + "/json"))
+                Directory.CreateDirectory(Application.persistentDataPath + "/json");
+
             if (!File.Exists(Application.persistentDataPath + "/json/Highscores.json"))
             {
                 var fs = new FileStream(Application.persistentDataPath + "/json/Highscores.json", FileMode.Create);

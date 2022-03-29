@@ -7,7 +7,7 @@ namespace GameScene.Player
     {
         private Health _health;
         private Shooting _shooter;
-        
+
         private float _countingTime;
         private double _timeUntilShoot = 0.2f;
         public const double MaxTimeUntilShoot = 0.1f;
@@ -16,7 +16,7 @@ namespace GameScene.Player
         {
             return MaxTimeUntilShoot;
         }
-        
+
         public double GetTimeUntilShoot()
         {
             return _timeUntilShoot;

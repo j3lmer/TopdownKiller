@@ -80,7 +80,7 @@ namespace GameScene
         {
             _lives -= lives;
             if (_lives > 0) SetHp(100);
-            if(_lives <= 0) GetComponent<Death>().Die();
+            if (_lives <= 0) GetComponent<Death>().Die();
 
             CheckForPlayerLives();
         }

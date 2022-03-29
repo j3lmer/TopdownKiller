@@ -12,6 +12,7 @@ namespace Highscores.Logic
         private HighscorePlayers _hsPlayers;
         private string _localPlayerName = "";
         private int _localScore;
+
         private void Awake()
         {
             _helper = GetComponent<HighscoreManagerHelper>();
@@ -24,15 +25,16 @@ namespace Highscores.Logic
             _localScore = score;
             _localPlayerName = playerName;
             _helper.SaveToFile(UpdateList());
-            
+
             _localScore = 0;
             _localPlayerName = "";
         }
 
         private string UpdateList()
         {
-            if (_hsPlayers == null || _hsPlayers.highscorePlayerData == null || _hsPlayers.highscorePlayerData.Count <= 0) return CreateAndConvertNewPlayer();
-            
+            if (_hsPlayers == null || _hsPlayers.highscorePlayerData == null ||
+                _hsPlayers.highscorePlayerData.Count <= 0) return CreateAndConvertNewPlayer();
+
             int index = _hsPlayers.highscorePlayerData.FindIndex(p => p.name == _localPlayerName);
             if (index == -1) return CreateAndConvertNewPlayer();
 
@@ -48,7 +50,8 @@ namespace Highscores.Logic
         private string CreateAndConvertNewPlayer()
         {
             if (_hsPlayers == null) _hsPlayers = new HighscorePlayers();
-            if (_hsPlayers.highscorePlayerData == null) _hsPlayers.highscorePlayerData = new List<HighscorePlayerData>();
+            if (_hsPlayers.highscorePlayerData == null)
+                _hsPlayers.highscorePlayerData = new List<HighscorePlayerData>();
             HighscorePlayerData newPlayerData = CreateNewPlayerData();
             _hsPlayers.highscorePlayerData.Add(newPlayerData);
             return ConvertToString(_hsPlayers.highscorePlayerData);
