@@ -7,7 +7,6 @@ namespace GameScene.Player
     {
         private Health _health;
         private Shooting _shooter;
-        private Score _score;
         
         private float _countingTime;
         private double _timeUntilShoot = 0.2f;

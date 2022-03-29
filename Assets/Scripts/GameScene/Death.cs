@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 
 namespace GameScene
@@ -24,6 +25,7 @@ namespace GameScene
 
         public void Die()
         {
+            FindObjectOfType<AudioManager>().Play("die");
             _health.SetAlive(false);
             
             Destroy(gameObject);

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Audio;
 using Highscores.Data;
 using Highscores.Logic;
 using TMPro;
@@ -22,6 +23,9 @@ namespace UI
 		private Transform _menuTransform;
 		private Transform _highscores;
 		private Transform _explanation;
+
+		[SerializeField]
+		private AudioManager audioManager;
 
 		private void Awake()
 		{
@@ -51,11 +55,14 @@ namespace UI
 
 		private void StartGame()
 		{
+			audioManager.Play("select");
 			SceneManager.LoadScene(1);
 		}
 
 		private void ShowExplanation()
 		{
+			audioManager.Play("select");
+
 			_menuTransform = _canvas.transform.Find("MainMenu");
 			_uiHelper.Hospital(_menuTransform, false);
 			_uiHelper.Hospital(_explanation, true);
@@ -63,6 +70,7 @@ namespace UI
 
 		private void ShowHighscores()
 		{
+			audioManager.Play("select");
 			float templateHeight = 10f;
 			
 			_uiHelper.Hospital(_menuTransform, false);
@@ -104,18 +112,18 @@ namespace UI
 			switch (i)
 			{
 				case 0:
-					setColors(template, new Color32(255, 215, 0, 255));
+					SetColors(template, new Color32(255, 215, 0, 255));
 					break;
 				case 1:
-					setColors(template, new Color32(192, 192, 192, 255));
+					SetColors(template, new Color32(192, 192, 192, 255));
 					break;
 				case 2:
-					setColors(template, new Color32(205, 127, 50, 255));
+					SetColors(template, new Color32(205, 127, 50, 255));
 					break;
 			}
 		}
 
-		private void setColors(GameObject thisTemplate, Color32 color)
+		private void SetColors(GameObject thisTemplate, Color32 color)
 		{
 			TMP_Text[] list = thisTemplate.GetComponentsInChildren<TMP_Text>();
 			foreach (TMP_Text tmpText in list)
@@ -126,6 +134,7 @@ namespace UI
 
 		private void Back()
 		{ 
+			audioManager.Play("select");
 			_uiHelper.Hospital(_menuTransform, true);
 			_uiHelper.Hospital(_highscores, false);
 			_uiHelper.Hospital(_explanation, false);
@@ -133,6 +142,7 @@ namespace UI
 		
 		private void Quit()
 		{
+			audioManager.Play("select");
 			Application.Quit();
 		}
 	}

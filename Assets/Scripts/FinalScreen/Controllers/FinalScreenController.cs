@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Audio;
 using Highscores.Logic;
 using TMPro;
 using UI;
@@ -21,6 +22,7 @@ namespace FinalScreen.Controllers
 
         private HighscoreManager _highscoreManager;
         private UIHelper _helper;
+        [SerializeField] private AudioManager _audioManager;
 
         private int[] letterIndexes = {0, 0, 0};
         private readonly char[] _alphabet = "ABCDEFGHIJKLMNOPQRSTUVWQXYZ0123456789!?".ToCharArray();
@@ -42,6 +44,7 @@ namespace FinalScreen.Controllers
 
         private void Awake()
         {
+            _audioManager = GameObject.FindObjectOfType<AudioManager>();
             _helper = GetComponent<UIHelper>();
             _highscoreManager = GetComponent<HighscoreManager>();
             _defaultColor = letters[_selected].color;
@@ -91,30 +94,34 @@ namespace FinalScreen.Controllers
 
         private void NextLetter()
         {
+            _audioManager.Play("select");
             letterIndexes[_selected] = letterIndexes[_selected] >= 38 ? 0 : letterIndexes[_selected] + 1;
             letters[_selected].text = _alphabet[letterIndexes[_selected]].ToString();
         }
 
         private void PrevLetter()
         {
+            _audioManager.Play("select");
             letterIndexes[_selected] = letterIndexes[_selected] <= 0 ? 38 : letterIndexes[_selected] - 1;
             letters[_selected].text = _alphabet[letterIndexes[_selected]].ToString();
         }
 
         private void NextLetterIndex()
         {
+            _audioManager.Play("select");
             letters[_selected].color = _defaultColor;
             _selected = _selected + 1 > letters.Length - 1 ? 0 : _selected + 1;
         }
 
         private void Submit()
         {
+            _audioManager.Play("select");
             StringBuilder sb = new StringBuilder();
             foreach (TMP_Text letter in letters) sb.Append(letter.text);
             string playerName = sb.ToString();
 
             _highscoreManager.AddOrUpdateHighscore(playerName, GetScore());
-            SceneManager.LoadScene(0); //FIXME: werkt niet/gebeurt niet
+            SceneManager.LoadScene(0);
         }
     }
 }

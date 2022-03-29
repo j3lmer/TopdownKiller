@@ -11,7 +11,6 @@ namespace Highscores.Logic
     {
         public string GetStorageFileRaw()
         {
-            Debug.Log(Application.persistentDataPath + "/json/Highscores.json");
             if (!Directory.Exists(Application.persistentDataPath + "/json")) Directory.CreateDirectory(Application.persistentDataPath + "/json");
             
             if (!File.Exists(Application.persistentDataPath + "/json/Highscores.json"))

@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using GameScene.Powerup;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace GameScene
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float bulletForce = 20f;
         private int _fireMode = 0;
+        private AudioManager _manager;
 
         public const int Maxfiremode = 2;
 
@@ -28,9 +30,15 @@ namespace GameScene
             if (fireMode > Enum.GetNames(typeof(FireModes)).Length -1) return;
             _fireMode = fireMode;
         }
-        // Update is called once per frame
+
+        private void Awake()
+        {
+            _manager = FindObjectOfType<AudioManager>();
+        }
+
         public void Shoot(Color color)
         {
+            _manager.Play("shoot");
             switch (_fireMode)
             {
                 case (int) FireModes.Default:

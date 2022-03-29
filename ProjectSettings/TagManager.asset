@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Wall
   - HIGHSCORES
+  - AudioManager
   layers:
   - Default
   - TransparentFX

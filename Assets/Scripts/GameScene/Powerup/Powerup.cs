@@ -1,3 +1,5 @@
+using System;
+using Audio;
 using GameScene.Enemy;
 using GameScene.Player;
 using UnityEngine;
@@ -8,6 +10,12 @@ namespace GameScene.Powerup
     {
         private int _powerupType;
         private GameObject _player;
+        private AudioManager _manager;
+
+        private void Awake()
+        {
+            _manager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        }
 
         public int GetPowerupType()
         {
@@ -28,8 +36,9 @@ namespace GameScene.Powerup
         {
             if (!col.gameObject.CompareTag("Player")) return;
             _player = col.gameObject;
-            Destroy(gameObject);
+            _manager.Play("powerup");
             ExecutePowerup();
+            Destroy(gameObject);
         }
 
         private void ExecutePowerup()
