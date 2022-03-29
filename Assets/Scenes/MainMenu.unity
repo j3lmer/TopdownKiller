@@ -1165,7 +1165,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - audioClip: {fileID: 8300000, guid: a2ab2cc6dab972b058cbe81f9bc73378, type: 3}
+  - audioClip: {fileID: 8300000, guid: f4b0af62cdb98b109ac2be543f9f3c79, type: 3}
     name: shoot
     volume: 1
     pitch: 1
