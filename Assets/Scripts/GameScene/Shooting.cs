@@ -11,7 +11,7 @@ namespace GameScene
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float bulletForce = 20f;
         private int _fireMode = 0;
-        private AudioManager _manager;
+        private AudioSource _source;
 
         public const int Maxfiremode = 2;
 
@@ -31,14 +31,14 @@ namespace GameScene
             _fireMode = fireMode;
         }
 
-        private void Awake()
+        private void Start()
         {
-            _manager = FindObjectOfType<AudioManager>();
+            _source = GetComponent<AudioSource>();
         }
 
         public void Shoot(Color color)
         {
-            _manager.Play("shoot");
+            _source.Play();
             switch (_fireMode)
             {
                 case (int) FireModes.Default:
