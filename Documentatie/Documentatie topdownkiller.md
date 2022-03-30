@@ -220,9 +220,27 @@ NVT
 
 - [ ] "Bosses zijn wat te zwak"
 
-- [ ] "mist muziek"
+- [x] "mist geluid"
 
 - [ ] "Als je diagonaal gaat ga je sneller"
+
+### Testpersoon 4:
+
+- [ ] UI in de gamescene is incorrect met andere scherm resoluties
+
+- [ ] UI is onder de spelers
+
+- [x] met hoge afvuursnelheid is de audio raar
+
+- [ ] geen indicatie dat enemies gaan spawnen en schieten gelijk
+
+### Testpersoon 5:
+
+- [ ] Onduidelijkheden over wat alle powerups doen
+
+- [ ] hoofdmenu lijkt gedesigned voor mobile
+
+
 
 ## Versiebeheer:
 
